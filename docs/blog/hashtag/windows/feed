@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>#Windows &#8211; HippoBlog</title>
+	<atom:link href="https://blog.hippohack.me/hashtag/windows/feed" rel="self" type="application/rss+xml" />
+	<link>https://blog.hippohack.me</link>
+	<description>Web開発に関する備忘録や日々の雑記ブログ</description>
+	<lastBuildDate>Fri, 04 Jun 2021 12:25:09 +0000</lastBuildDate>
+	<language>ja</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.7.13</generator>
+
+<image>
+	<url>https://blog.hippohack.me/_cms/wp-content/uploads/2021/03/image.jpg</url>
+	<title>#Windows &#8211; HippoBlog</title>
+	<link>https://blog.hippohack.me</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">190967550</site>	<item>
+		<title>Windows10のキーボードまわりの話</title>
+		<link>https://blog.hippohack.me/note/241</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Fri, 04 Jun 2021 12:25:09 +0000</pubDate>
+				<guid isPermaLink="false">https://blog.hippohack.me/?post_type=note&#038;p=241</guid>
+
+					<description><![CDATA[キーボードがUS配列なのでなんとかするためのあれこれ。 接続しているキーボードのレイアウトを変更する 参考サイトのままなので詳細はそちらをチェック。 参考 Windows10日本語版で英語配列キーボードを使用する &#8 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>キーボードがUS配列なのでなんとかするためのあれこれ。</p>
+<h2>接続しているキーボードのレイアウトを変更する</h2>
+<p>参考サイトのままなので詳細はそちらをチェック。</p>
+<ul>
+<li>参考
+<ul>
+<li><a href="https://qiita.com/shimizu14/items/000cceb9e72a492b9176">Windows10日本語版で英語配列キーボードを使用する &#8211; Qiita</a></li>
+</ul>
+</li>
+</ul>
+<h2>IME切り替えのためのキーの割り当て</h2>
+<p>参考サイトのままなので詳細はそちらをチェック。</p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2021/06/2021-06-04-21_01_19-.png" alt="" width="926" height="778" class="aligncenter size-full wp-image-242" srcset="https://blog.hippohack.me/_cms/wp-content/uploads/2021/06/2021-06-04-21_01_19-.png 926w, https://blog.hippohack.me/_cms/wp-content/uploads/2021/06/2021-06-04-21_01_19-.png 300w, https://blog.hippohack.me/_cms/wp-content/uploads/2021/06/2021-06-04-21_01_19-.png 768w" sizes="(max-width: 926px) 100vw, 926px" /></p>
+<ul>
+<li>参考
+<ul>
+<li><a href="https://qiita.com/nak435/items/65060d680f236c2a6d30">【備忘録】Windows10 102（英語配列）キーボードの場合にIMEのON/OFF（日本語入力）切り替え方法 &#8211; Qiita</a></li>
+</ul>
+</li>
+</ul>
+<h2>PowerToysのKeyboard Managerでリマップ</h2>
+<p>上で割り当てられた『Shift ＋ Space』でのIME切り替えをスペース右のWINキーにあてる。</p>
+<p>MAC兼用のキーボードのためスペースの右にもCommandキーがある。それをIMEの切り替えにする。</p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2021/06/2021-06-04-21_17_27--1024x751.png" alt="" width="1024" height="751" class="aligncenter size-large wp-image-243" srcset="https://blog.hippohack.me/_cms/wp-content/uploads/2021/06/2021-06-04-21_17_27-.png 1024w, https://blog.hippohack.me/_cms/wp-content/uploads/2021/06/2021-06-04-21_17_27-.png 300w, https://blog.hippohack.me/_cms/wp-content/uploads/2021/06/2021-06-04-21_17_27-.png 768w, https://blog.hippohack.me/_cms/wp-content/uploads/2021/06/2021-06-04-21_17_27-.png 1176w" sizes="(max-width: 1000px) 100vw, 1000px" /></p>
+<p>これでスペースキー右のWinキーでIMEの切り替えをトグルできる。</p>
+<p>理想通りではないけどとりあえずこれでいいかなと。『Ait ＋ `』よりはいいかなと。</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">241</post-id>	</item>
+	</channel>
+</rss>

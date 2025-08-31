@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>#TV &#8211; HippoBlog</title>
+	<atom:link href="https://blog.hippohack.me/hashtag/tv/feed" rel="self" type="application/rss+xml" />
+	<link>https://blog.hippohack.me</link>
+	<description>Web開発に関する備忘録や日々の雑記ブログ</description>
+	<lastBuildDate>Tue, 02 Jul 2019 13:23:53 +0000</lastBuildDate>
+	<language>ja</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.7.13</generator>
+
+<image>
+	<url>https://blog.hippohack.me/_cms/wp-content/uploads/2021/03/image.jpg</url>
+	<title>#TV &#8211; HippoBlog</title>
+	<link>https://blog.hippohack.me</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">190967550</site>	<item>
+		<title>壁に穴をあけるなんて嫌。低価格な室内アンテナで事足りるんじゃないの！？</title>
+		<link>https://blog.hippohack.me/note/29</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Sun, 04 Jun 2017 14:02:16 +0000</pubDate>
+				<guid isPermaLink="false">http://blog.hippohack.test/?post_type=note&#038;p=29</guid>
+
+					<description><![CDATA[お久しぶりです。記事を書いていない間に、10キロ増の@hippohackです。 先日引越が完了し、TVの受信方法はどうしようという話に。 最近は屋根の上にアンテナを立てる人って少ないらしいです。あの魚の骨みたいやつですね [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>お久しぶりです。記事を書いていない間に、10キロ増の<a href="https://twitter.com/hippohack">@hippohack</a>です。</p>
+<p>先日引越が完了し、TVの受信方法はどうしようという話に。</p>
+<p>最近は屋根の上にアンテナを立てる人って少ないらしいです。あの魚の骨みたいやつですね。</p>
+<p>じゃあ、どのような手段でTV放送を受信するのか。</p>
+<div class="m-ads_w300">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- スマホ用（ロングとの入れ替え用）2 -->
+        <ins class="adsbygoogle"
+                style="display:inline-block;width:300px;height:250px"
+                data-ad-client="ca-pub-7815961604338808"
+                data-ad-slot="7582629372"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+<h2>受信方法を考える &#8211; 光回線 &#8211; CATV（ケーブルテレビ）</h2>
+<p>最近は電話、インターネット、TVをひとまとめにして契約するみたい。 いろいろな会社と契約する必要がないのはいいですよね。</p>
+<p>でも、このようなインフラ提供会社であればもちろん毎月のランニングコストがかかるわけです。 うちの場合、たいしてTVを見ないのでどうしてももったいないと思ってしまう。</p>
+<p>実際計算して見ると、 A社 地デジ受信にかかる費用が【980円/月】の場合 ＠1年 980円 × 12ヶ月 = 11,760円 ＠10年 11,760円 × 10年 = 117,600円 ＠35年 11,760円 × 35年 = 411,600円 ケチな我が家では、ぞっとしてしまいました。</p>
+<p>まぁ、アンテナの保守や整備なんかをする必要がないという点ではアリなのかもしれませんが「無きゃ無いで構わない」ものにお金を払い続けるのはどうも納得できませんでした。</p>
+<p>で、今回ランニングコストのかからないアンテナ設置を検討することに。</p>
+<h2>アンテナを調達する</h2>
+<p>そしていろいろ調べている間に見つけたのがこちら。</p>
+<p>1byoneのペーパーアンテナ。</p>
+<p><iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&#038;bc1=000000&#038;IS2=1&#038;bg1=FFFFFF&#038;fc1=000000&#038;lc1=0000FF&#038;t=benzohcom-22&#038;o=9&#038;p=8&#038;l=as4&#038;m=amazon&#038;f=ifr&#038;ref=as_ss_li_til&#038;asins=B00WU73LX4&#038;linkId=42adab659b5411d457218aad23cbe42c"></iframe></p>
+<p>アマゾンの評価も高い！これはいけんじゃないの思えた。 さらにブースターをつけることで更に品質を覚悟できるとのこと。</p>
+<p><iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&#038;bc1=000000&#038;IS2=1&#038;bg1=FFFFFF&#038;fc1=000000&#038;lc1=0000FF&#038;t=benzohcom-22&#038;o=9&#038;p=8&#038;l=as4&#038;m=amazon&#038;f=ifr&#038;ref=as_ss_li_til&#038;asins=B013FTWMG2&#038;linkId=2a25308ff25eca2385dc7912ad2c401d"></iframe></p>
+<p>しかもお値段ですよね。安い。 これだったら山を貼ってものいいんじゃないかと。使えなかったとしてもメルカリで売ればいいしなんて思いながら買ってみました。</p>
+<p>アンテナとブースターをセットで。 ## 結果 まずはブースターなしで、接続。</p>
+<p>「え、普通に見れる。」</p>
+<p>確かに若干なのかざらついた感じにも見えなくはない。（これはたぶんうちのTVのグレードの低さの問題かと）</p>
+<p>さずが、サンテレビや、京都テレビは見れなかったけど。当方、大阪です。</p>
+<p>正直ここまで見れるもんだと思ってなかった。 それにまだ、ブースターという余力がある。</p>
+<p>では、続いてブースターもかます。 「え、普通に見れる。」 そらそうですわな。大満足です。</p>
+<p>【追記】</p>
+<p>正確な原因はわかってないのですが、まれに、工事の車が家の前通ったときなんかは映像が乱れるみたい。</p>
+<p>駄目だった場合、魚の骨みたいなアンテナではなくデザインアンテナっていう建物の景観の邪魔にならないものをつけることも検討していました。</p>
+<p>その場合、どうしても壁に穴をあけることになるのでどうも気が進まなかったんですよね。 それにデザインアンテナであれば価格も5、60000してたかもしれない。</p>
+<h2>かかった負担</h2>
+<p>当時（2017年5月14日）の購入金額ですが、￥ 6,091。 これでTVを見る手段を手に入れました。</p>
+<p>今回我が家では直接TVに接続していますが、屋根裏の分配器に接続すれば、各部屋のTV端子が有効になるはずなので、もし複数台のTVを設置することになればアンテナを分配器に接続する方法にもチャレンジしてみたいものです。</p>
+<h2>補足</h2>
+<p>設置場所としては、窓際に置くのがおすすめです。</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">29</post-id>	</item>
+	</channel>
+</rss>

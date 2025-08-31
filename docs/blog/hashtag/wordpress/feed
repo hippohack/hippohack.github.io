@@ -1,0 +1,1037 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>#WordPress &#8211; HippoBlog</title>
+	<atom:link href="https://blog.hippohack.me/hashtag/wordpress/feed" rel="self" type="application/rss+xml" />
+	<link>https://blog.hippohack.me</link>
+	<description>Web開発に関する備忘録や日々の雑記ブログ</description>
+	<lastBuildDate>Thu, 27 Jun 2024 12:25:40 +0000</lastBuildDate>
+	<language>ja</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.7.13</generator>
+
+<image>
+	<url>https://blog.hippohack.me/_cms/wp-content/uploads/2021/03/image.jpg</url>
+	<title>#WordPress &#8211; HippoBlog</title>
+	<link>https://blog.hippohack.me</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">190967550</site>	<item>
+		<title>Contact Form 7 でメール送信後に PDF をダウンロードさせる</title>
+		<link>https://blog.hippohack.me/web/271</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Sun, 23 Jun 2024 12:15:28 +0000</pubDate>
+				<guid isPermaLink="false">https://blog.hippohack.me/?post_type=web&#038;p=271</guid>
+
+					<description><![CDATA[前提 カスタム投稿を設定済み カスタム投稿のカスタムフィールドにダウンロードさせたい PDF のURL を持たせている PDF は、メディアライブラリに置いているので URL を知っている人は見れるというゆるい状態 Co [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h2>前提</h2>
+<ul>
+<li>カスタム投稿を設定済み</li>
+<li>カスタム投稿のカスタムフィールドにダウンロードさせたい PDF のURL を持たせている
+<ul>
+<li>PDF は、メディアライブラリに置いているので URL を知っている人は見れるというゆるい状態</li>
+</ul>
+</li>
+<li>Contact Form 7 でフォームは作成済み</li>
+</ul>
+<h2>実装</h2>
+<p>PHP 側の処理です。</p>
+<p>メール送信後のフック <code>wpcf7_mail_sent</code> を利用します。</p>
+<p><em class="file-name">[functions.php]</em></p>
+<pre><code>// メール送信後のタイミングのフックを利用して PDF のURLをセッションに保存するアクションフックを定義
+function after_mail_sent_action($contact_form) {
+    if ($contact_form-&gt;id() == 999) { // フォームのID を適宜設定する
+        $submission = WPCF7_Submission::get_instance();
+
+        if ($submission) {
+            // CONTACT FORM が埋め込まれている投稿ページのID を取得する
+            $post_id = $submission-&gt;get_meta('container_post_id');
+
+            // カスタムフィールドからファイルのURLを取得する
+            if (function_exists('CFS')) {
+                $file_url = CFS()-&gt;get('download_file_url', $post_id);
+
+                if ($file_url) {
+                    session_start();
+                    $_SESSION['download_url'] = $file_url;
+                }
+            }
+        }
+    }
+}
+add_action('wpcf7_mail_sent', 'after_mail_sent_action');
+
+// PDF ダウンロード用のエンドポイントを定義
+add_action('rest_api_init', function () {
+    // URL は適宜
+    register_rest_route('custom/v1', '/get-download-url', array(
+        'methods' =&gt; 'GET',
+        'callback' =&gt; 'get_download_url',
+    ));
+});
+
+// セッションを参照して PDF のURL を返す
+function get_download_url() {
+    session_start();
+    if (isset($_SESSION['download_url'])) {
+        $download_url = $_SESSION['download_url'];
+        unset($_SESSION['download_url']);
+        return new WP_REST_Response(array('download_url' =&gt; $download_url), 200);
+    } else {
+        return new WP_REST_Response(array('download_url' =&gt; null), 404);
+    }
+}
+</code></pre>
+<p>続いて、js の処理です。</p>
+<p>こちらもメール送信後のイベント <code>wpcf7mailsent</code> を利用します。</p>
+<p><em class="file-name">[script.js]</em></p>
+<pre><code>// ダウンロード用エンドポイントをたたいて URLを取得しアンカーのダウンロード属性を利用してPDFをダウンロードする
+document.addEventListener('wpcf7mailsent', function(event) {
+    if (event.detail.contactFormId == 999) {
+        fetch('/wp-json/custom/v1/get-download-url')
+            .then(response =&gt; response.json())
+            .then(data =&gt; {
+                if (data.download_url) {
+                    const link = document.createElement('a');
+                    link.href = data.download_url;
+                    link.download = '';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
+            });
+    }
+}, false);
+</code></pre>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">271</post-id>	</item>
+		<item>
+		<title>「もっと見る」ボタンの実装方法</title>
+		<link>https://blog.hippohack.me/web/268</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Sat, 18 May 2024 15:31:53 +0000</pubDate>
+				<guid isPermaLink="false">https://blog.hippohack.me/?post_type=web&#038;p=268</guid>
+
+					<description><![CDATA[こんにちは、hippohackのブログへようこそ！今回は、WordPressサイトに「もっと見る」ボタンを実装する方法について解説します。この機能は、ページの読み込みを軽減し、ユーザーエクスペリエンスを向上させるために非 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>こんにちは、hippohackのブログへようこそ！今回は、WordPressサイトに「もっと見る」ボタンを実装する方法について解説します。この機能は、ページの読み込みを軽減し、ユーザーエクスペリエンスを向上させるために非常に有効です。以下に、具体的なコードとその説明をまとめました。</p>
+<h2>1. REST API エンドポイントの作成</h2>
+<p>まず、<code>functions.php</code>にREST APIエンドポイントを作成します。このエンドポイントは、追加のケーススタディを取得するために使用されます。</p>
+<pre><code class="php">add_action('rest_api_init', function () {
+    register_rest_route('api', '/cases', array(
+        'methods' =&gt; 'GET',
+        'callback' =&gt; 'load_more_cases'
+    ));
+});
+
+function load_more_cases() {
+    $paged = isset($_GET['page']) ? intval($_GET['page']) : 1;
+    $args = array(
+        'post_type' =&gt; 'case',
+        'posts_per_page' =&gt; 9,
+        'paged' =&gt; $paged
+    );
+
+    $content = "";
+    $cases = get_posts($args);
+
+    if (count($cases) === 0) {
+        wp_send_json_success($content);
+        wp_die();
+    }
+
+    ob_start();
+    foreach($cases as $case):
+        ?&gt;
+        &lt;div class="case-item"&gt;
+            &lt;a href="&lt;?php echo get_the_permalink($case); ?&gt;" class="case-card"&gt;
+                &lt;figure class="card-img"&gt;
+                    &lt;?php if (has_post_thumbnail($case)) : ?&gt;
+                        &lt;?php echo get_the_post_thumbnail($case, 'full'); ?&gt;
+                    &lt;?php endif; ?&gt;
+                &lt;/figure&gt;
+                &lt;div class="card-body"&gt;
+                    &lt;h3 class="card-title"&gt;
+                        &lt;?php get_the_title($case); ?&gt;
+                    &lt;/h3&gt;
+                    // 省略
+                &lt;/div&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;?php
+    endforeach;
+    $content = ob_get_clean();
+
+    wp_send_json_success($content);
+}
+</code></pre>
+<h2>2. 総ページ数の取得</h2>
+<p>次に、<code>archive-case.php</code>に総ページ数を取得するためのコードを追加します。これにより、JavaScriptでページ数を管理できます。</p>
+<pre><code class="php">// ループの外に追記
+&lt;input type="hidden" name="totalPages" value="&lt;?php echo $the_query-&gt;max_num_pages; ?&gt;"&gt;
+</code></pre>
+<h2>3. JavaScriptでの「もっと見る」ボタンの動作</h2>
+<p>最後に、<code>js</code> で「もっと見る」ボタンの動作を定義します。ボタンがクリックされるたびに、新しいケーススタディがロードされ、ページ数が更新されます。</p>
+<pre><code class="js">let page = 2;
+
+$(document).ready(() =&gt; {
+    const totalPages = document.getElementsByName("totalPages")[0].value;
+
+    $(".read-more-btn").on("click", () =&gt; {
+        $.ajax({
+            url: "/wp-json/api/cases",
+            type: "GET",
+            data: {
+                page: page,
+            },
+        })
+            .then((response) =&gt; {
+                $(".case-list").append(response.data);
+                page++;
+
+                if (page &gt;= Number(totalPages)) {
+                    $(".read-more-btn").hide();
+                }
+            })
+            .catch((error) =&gt; {
+                console.log({ error });
+            });
+    });
+});
+</code></pre>
+<h3>まとめ</h3>
+<p>以上が、WordPressサイトに「もっと見る」ボタンを実装するための手順です。この方法を使えば、ユーザーがページをリロードすることなく、追加のコンテンツをシームレスに読み込むことができます。ぜひ試してみてください！</p>
+<p>hippohack のブログを読んでいただき、ありがとうございました。次回もお楽しみに！</p>
+<p>（この記事は AI により作成されています）</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">268</post-id>	</item>
+		<item>
+		<title>WordPress Headless CMS, GraphQL, and Nextjs（丸パクリ）</title>
+		<link>https://blog.hippohack.me/web/237</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Sat, 29 May 2021 12:52:49 +0000</pubDate>
+				<guid isPermaLink="false">https://blog.hippohack.me/?post_type=web&#038;p=237</guid>
+
+					<description><![CDATA[こちらの方の動画を見てめっちゃいいと思ったのでちょっと参考にさせていただいてやって見ようと思い立った。 WPのホストはローカルで。 コードはここ → colbyfayock/next-wordpress-starter: [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>こちらの方の動画を見てめっちゃいいと思ったのでちょっと参考にさせていただいてやって見ようと思い立った。</p>
+<div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+  <iframe loading="lazy" width="600" height="400" src="https://www.youtube.com/embed/YZR6P6Q0tmc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<p>WPのホストはローカルで。</p>
+<ul>
+<li>コードはここ → <a href="https://github.com/colbyfayock/next-wordpress-starter">colbyfayock/next-wordpress-starter: 📝 Bring WordPress to the static world with Next.js</a></li>
+</ul>
+<h2>前提</h2>
+<ul>
+<li>WordPressがわかる</li>
+<li>Next.jsがわかる</li>
+<li>Gitがわかる</li>
+</ul>
+<h2>クローンしてくる</h2>
+<p>自分は、ローカルマシン内の「_tmp」フォルダで実施。</p>
+<p>なので、</p>
+<pre><code>cd development/_tmp/
+</code></pre>
+<p>移動して、</p>
+<pre><code>git clone git@github.com:colbyfayock/next-wordpress-starter.git    
+</code></pre>
+<p>クローンしてくる。</p>
+<h2>.env.local つくる</h2>
+<p>中身は、<code>WORDPRESS_GRAPHQL_ENDPOINT="http://wordpressite.com/graphql"</code></p>
+<p>GraphQLのエンドポイントのURLの設定をする。</p>
+<p>が、いったん中身は仮にしておいてバックエンドとなるWordPressの設定をする</p>
+<h2>WordPressの設定をする</h2>
+<p>楽してローカルにもともとあった検証用のWPを使う。HOSTINGER 気になるけど。</p>
+<ul>
+<li><a href="https://www.hostinger.jp/">The Hosting Platform Made For You &#8211; Go Online With Hostinger</a></li>
+</ul>
+<p>URLは、www.wpsample.test で。</p>
+<p>GraphQLのプラグインを入れろと。↓ これね。</p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2021/05/5ba5f1a459c9c1df0e02d3c318a74e9d.png" alt="" width="581" height="290" class="aligncenter size-full wp-image-239" srcset="https://blog.hippohack.me/_cms/wp-content/uploads/2021/05/5ba5f1a459c9c1df0e02d3c318a74e9d.png 581w, https://blog.hippohack.me/_cms/wp-content/uploads/2021/05/5ba5f1a459c9c1df0e02d3c318a74e9d.png 300w" sizes="(max-width: 581px) 100vw, 581px" /></p>
+<ul>
+<li><a href="https://www.wpgraphql.com/">GraphQL API for WordPress | WPGraphQL</a> → 有効化する</li>
+</ul>
+<p>[WIP]🙇‍♂</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">237</post-id>	</item>
+		<item>
+		<title>[wordpress] 自作のテーブルを追加する</title>
+		<link>https://blog.hippohack.me/web/142</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Sat, 26 Oct 2019 02:30:23 +0000</pubDate>
+				<guid isPermaLink="false">https://blog.hippohack.me/?post_type=web&#038;p=142</guid>
+
+					<description><![CDATA[自作のプラグインを有効化した際に自作のテーブルを作成するときを想定した、基本実装部分のログ。 テーブルの作成 プラグインインストール時に実行するメソッドを定義する。 [class] function hippo_inst [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>自作のプラグインを有効化した際に自作のテーブルを作成するときを想定した、基本実装部分のログ。</p>
+<h2>テーブルの作成</h2>
+<p>プラグインインストール時に実行するメソッドを定義する。</p>
+<p><em class="file-name">[class]</em></p>
+<pre><code>function hippo_install() {
+    global $wpdb;
+    $table_name = $wpdb-&gt;prefix . "hippo_values";
+}
+</code></pre>
+<ul>
+<li>wp-admin/includes/upgrade.php にある dbDelta 関数を使う</li>
+<li>デフォルトだと読み込まれないので、インクルードする必要あり</li>
+</ul>
+<p><em class="file-name">[class]</em></p>
+<pre><code>  function install() {
+    global $wpdb;
+    $table_name = $wpdb-&gt;prefix . "hippo_values";
+
+    $charset_collate = $wpdb-&gt;get_charset_collate();
+
+    $sql = "CREATE TABLE $table_name (
+      id mediumint(9) NOT NULL AUTO_INCREMENT,
+      time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+      name tinytext NOT NULL,
+      text text NOT NULL,
+      url varchar(55) DEFAULT '' NOT NULL,
+      UNIQUE KEY id (id)
+    ) $charset_collate;";
+
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    dbDelta( $sql );
+  }
+</code></pre>
+<h2>データ投入</h2>
+<p><em class="file-name">[class]</em></p>
+<pre><code>  function add_init_data() {
+    global $wpdb;
+    $name = 'hippo';
+    $text = 'cool!!';
+
+    $table_name = $wpdb-&gt;prefix . "hippo_values";
+
+    $wpdb-&gt;insert(
+      $table_name,
+      array(
+        'time' =&gt; current_time( 'mysql' ),
+        'name' =&gt; $name,
+        'text' =&gt; $text,
+      )
+    );
+  }
+</code></pre>
+<h2>定義したメソッドをフックで実行する</h2>
+<p>プラグイン有効化時にテーブルを作成して、初期データ入れる。</p>
+<p><em class="file-name">[class外]</em></p>
+<pre><code>register_activation_hook( __FILE__, ['HippoPlugin', 'install'] );
+register_activation_hook( __FILE__, ['HippoPlugin', 'add_init_data'] );
+</code></pre>
+<p>テーブルが作成されたのを確認した。</p>
+<h2>データの読み書き</h2>
+<ul>
+<li>$wpdb オブジェクトを使う
+<ul>
+<li><a href="https://wpdocs.osdn.jp/%E9%96%A2%E6%95%B0%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9/wpdb_Class">関数リファレンス/wpdb Class &#8211; WordPress Codex 日本語版</a></li>
+</ul>
+</li>
+<li>wpdbクラスを継承して対応するテーブルを追加する
+<ul>
+<li><a href="http://blog.syuhari.jp/archives/1782">[WordPress] カスタマイズした wpdb クラスを使用する方法 | Sun Limited Mt.</a></li>
+</ul>
+</li>
+</ul>
+<h3>読みこみ</h3>
+<p><em class="file-name">class1</em></p>
+<pre><code>require_once( ABSPATH . WPINC . '/wp-db.php' );
+
+class hippp_wpdb extends wpdb {
+  // オーバーライドする
+  var $tables = array(
+    'posts',
+    'comments',
+    'links',
+    'options',
+    'postmeta',
+    'terms',
+    'term_taxonomy',
+    'term_relationships',
+    'termmeta',
+    'commentmeta',
+    'hippo_values'
+  );
+}
+</code></pre>
+<p><em class="file-name">class2</em></p>
+<pre><code>class HippoPlugin
+{
+  function get_data() {
+    $wpdb = new hippp_wpdb(DB_USER, DB_PASSWORD, DB_NAME, DB_HOST);
+
+    $data = $wpdb-&gt;get_results(
+      "SELECT * FROM `wphhackblog_hippo_values` WHERE id = 1"
+      // "SELECT * FROM $wpdb-&gt;hippo_values WHERE id = 1"
+    );
+
+    return $data;
+  }
+}
+
+
+HippoPlugin::get_data();
+</code></pre>
+<ul>
+<li>queryの中のテーブル名はベタで書かずに、$wpdb->hippo_values で指定するのがベターなはず。</li>
+<li>ここでは<code>wp-content/db.php</code> を作成してないせいかうまく機能せず。</li>
+</ul>
+<h3>書き込み（更新）</h3>
+<p><em class="file-name">class2</em></p>
+<pre><code>class HippoPlugin
+{
+  function update_data() {
+    $wpdb = new hippp_wpdb(DB_USER, DB_PASSWORD, DB_NAME, DB_HOST);
+
+    $id = 1;
+    $new_value = 'hoge';
+    $updated = $wpdb-&gt;update( 'wphhackblog_hippo_values', ['text' =&gt; $new_value], ['id' =&gt; $id] );
+    return $updated;
+  }
+}
+
+
+HippoPlugin::update_data();
+</code></pre>
+<p>ここから必要に応じてカスタムしていく感じで。</p>
+<h2>参考</h2>
+<ul>
+<li><a href="https://wpdocs.osdn.jp/%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%82%92%E4%BD%9C%E3%82%8B">プラグインでデータベーステーブルを作る &#8211; WordPress Codex 日本語版</a></li>
+<li><a href="http://blog.yukarien.com/tech/wordpress-db-access/">自作テーブルの追加からデータ取得まで！WordPressでデータをDBに保持して使う方法 | INSIDE YUKARI</a></li>
+<li><a href="https://ateitexe.com/wordpress-add-original-table/">WordPressに独自のテーブルを作って読み書きするには *Ateitexe</a></li>
+<li><a href="https://wpdocs.osdn.jp/%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E3%83%BB%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9">プラグイン・リソース &#8211; WordPress Codex 日本語版</a></li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">142</post-id>	</item>
+		<item>
+		<title>[wordpress] プラグインをつくる</title>
+		<link>https://blog.hippohack.me/web/139</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Fri, 25 Oct 2019 12:16:13 +0000</pubDate>
+				<guid isPermaLink="false">https://blog.hippohack.me/?post_type=web&#038;p=139</guid>
+
+					<description><![CDATA[ローカルでの利用？自分でファイル置く？を想定。WordPressの公式リポジトリにはホストしない。 細かい実装はしないので、プラグインとして機能させる大枠のところまで。 プラグインをつくる ファイルヘッダー /plugi [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>ローカルでの利用？自分でファイル置く？を想定。WordPressの公式リポジトリにはホストしない。<br />
+細かい実装はしないので、プラグインとして機能させる大枠のところまで。</p>
+<h2>プラグインをつくる</h2>
+<h3>ファイルヘッダー</h3>
+<ul>
+<li>/plugins/hippo-plugin/hippo-plugin.php を作成。</li>
+<li>ヘッダーを適切に記述することで管理画面のプラグイン一覧に表出。</li>
+</ul>
+<p><em class="file-name">[/plugins/hippo-plugin/hippo-plugin.php]</em></p>
+<pre><code>&lt;?php
+/*
+Plugin Name: Hippo Plugin
+Plugin URI: null
+Description: null
+Version: 1.0.0
+Author: @hippohack
+Author URI: https://www.hippohack.me
+License: GPL2
+*/
+</code></pre>
+<h3>classで構成</h3>
+<pre><code>class HippoPlugin
+{
+  static function init() {
+    return new self();
+  }
+
+  function __construct() {
+    if (is_admin() &amp;&amp; is_user_logged_in()) {
+      add_action('admin_menu', [$this, '_hp_add_submenu']);
+    }
+  }
+
+  ︙
+
+  function _hp_plugin_activate() {
+      // hoge
+  }
+</code></pre>
+<h3><code>register_activation_hook</code> で初期化</h3>
+<p>class外で実行。<br />
+ここで <code>update_option</code> を使って初期データ入れておく。</p>
+<pre><code>register_activation_hook( __FILE__, ['HippoPlugin', '_hp_plugin_activate'] );
+</code></pre>
+<p>初回のインストール時のみ実行させるため、データを格納して判定する。<br />
+<code>register_activation_hook</code> は再有効化時にも実行されるため。</p>
+<pre><code>function _hp_plugin_activate() {
+    if (!get_option('_hp_installed')) {
+        // something
+        update_option('_hp_installed', true);
+    }
+}  
+</code></pre>
+<p>■ 参考</p>
+<ul>
+<li><a href="https://codex.wordpress.org/Function_Reference/register_activation_hook">Function Reference/register activation hook « WordPress Codex</a></li>
+</ul>
+<h2>設定画面</h2>
+<h3>サイドバーに設定へのリンクを設置する</h3>
+<ul>
+<li><code>admin_menu</code> フックを利用して <code>add_submenu_page</code> を呼ぶメソッドをコール。</li>
+<li><code>add_submenu_page</code>
+<ul>
+<li>http://developer.wordpress.org/reference/functions/add_submenu_page/</li>
+<li>引数
+<ul>
+<li>親のスラッグ（どの設定ページでよばれるか？）</li>
+<li>ページタイトル</li>
+<li>メニュータイトル</li>
+<li>ユーザー権限レベル</li>
+<li>メニューを参照するスラッグ（次の引数のメソッドを持ってるファイル）</li>
+<li>コンテンツを表示するメソッド名（ここでは、<code>_hp_admin_page</code>）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><em class="file-name">class</em></p>
+<pre><code>function __construct() {
+  if (is_admin() &amp;&amp; is_user_logged_in()) {
+    add_action('admin_menu', [$this, '_hp_add_submenu']);
+  }
+}
+
+function _hp_add_submenu() {
+  add_submenu_page('options-general.php', 'HippoPlugin Setting', 'HippoPlugin Setting', 8, __FILE__, [$this, '_hp_admin_page']);
+}
+
+function _hp_admin_page() {
+  require dirname(__FILE__) . '/hippo-plugin-admin.php';
+}
+</code></pre>
+<p>■ 参考</p>
+<ul>
+<li><a href="https://wordpress.org/support/article/roles-and-capabilities/">Roles and Capabilities | WordPress.org</a></li>
+</ul>
+<h4>add_actionをクラス内で使う場合</h4>
+<ul>
+<li>配列で最初にインスタンスを渡す。</li>
+</ul>
+<p><em class="file-name">class</em></p>
+<pre><code>public function __construct() {
+    add_action( 'save_post', array( $this, 'wpdocs_save_posts' ) );
+}
+
+function wpdocs_save_posts() {
+    // hoge
+}
+</code></pre>
+<p>参考</p>
+<ul>
+<li><a href="https://developer.wordpress.org/reference/functions/add_action/#user-contributed-notes">add_action() | Function | WordPress Developer Resources</a></li>
+</ul>
+<p>追記</p>
+<ul>
+<li>↓でもいけた。</li>
+</ul>
+<p><em class="file-name">class</em></p>
+<pre><code>public function __construct() {
+    add_action( 'save_post', 'Klass::wpdocs_save_posts' );
+}
+</code></pre>
+<h3>必要になる基本メソッド</h3>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2019/10/5044F037-C7C4-4100-AF83-9B72FD55C5C8-1024x211.png" alt="" width="1024" height="211" class="alignleft size-large wp-image-141" srcset="https://blog.hippohack.me/_cms/wp-content/uploads/2019/10/5044F037-C7C4-4100-AF83-9B72FD55C5C8.png 1024w, https://blog.hippohack.me/_cms/wp-content/uploads/2019/10/5044F037-C7C4-4100-AF83-9B72FD55C5C8.png 300w, https://blog.hippohack.me/_cms/wp-content/uploads/2019/10/5044F037-C7C4-4100-AF83-9B72FD55C5C8.png 768w, https://blog.hippohack.me/_cms/wp-content/uploads/2019/10/5044F037-C7C4-4100-AF83-9B72FD55C5C8.png 1790w" sizes="(max-width: 1000px) 100vw, 1000px" /></p>
+<ul>
+<li><code>update_option('key', 'value');</code>
+<ul>
+<li>wp_optionsテーブルに保存する。</li>
+<li>string, integer, array, object を格納可能。</li>
+</ul>
+</li>
+<li><code>get_option('key')</code>
+<ul>
+<li>読み込み。</li>
+</ul>
+</li>
+<li>注意
+<ul>
+<li>グローバルに使われるテーブルのため、keyの命名には注意。</li>
+</ul>
+</li>
+</ul>
+<h3>設定画面のフォーム作成</h3>
+<p><code>_hp_admin_page</code> で読み込んでる <code>hippo-plugin-admin.php</code> に記述。</p>
+<p><em class="file-name">[hippo-plugin-admin.php]</em></p>
+<pre><code> &lt;form method="post" action=""&gt;
+    &lt;input type="hidden" name="posted" value="true"&gt;
+
+    &lt;table class="form-table"&gt;
+      &lt;tr valign="top"&gt;
+        &lt;th scope="row"&gt;_hp_hoge&lt;/th&gt;
+        &lt;td&gt;
+          &lt;input
+            type="text"
+            name="_hp_hoge"
+            value="&lt;?php echo esc_attr( $settings-&gt;_hp_hoge ); ?&gt;"
+            class="regular-text code"
+          &gt;
+          &lt;div&gt;&lt;small&gt;色は匂へど散りぬるを、我が世たれぞ常ならむ。有為の奥山今日越えて、浅き夢見じ、酔ひもせず。&lt;/small&gt;&lt;/div&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      ︙
+    &lt;/table&gt;
+
+    &lt;?php settings_fields( 'hippo-plugin-settings' ); ?&gt;
+    &lt;?php do_settings_sections( 'hippo-plugin-settings' ); ?&gt;
+
+    &lt;?php submit_button(); ?&gt;
+  &lt;/form&gt;
+</code></pre>
+<p><code>settings_fields</code>、<code>do_settings_sections</code> の設置が必須かな。<br />
+と言いつつ理解しておらず、<code>register_setting</code> を使えてなかった。</p>
+<pre><code>  function _hp_register_mysettings() {
+    register_setting( 'hippo-plugin-settings', 'one' );
+    register_setting( 'hippo-plugin-settings', 'two' );
+    register_setting( 'hippo-plugin-settings', 'three' );
+  }
+</code></pre>
+<p>て書いたが、ほんとに必要？？</p>
+<p>■ 追記</p>
+<ul>
+<li><code>register_setting</code> を適切に使えば、update_optionの処理が不要。</li>
+<li>postで投げればうまく処理してくれる。</li>
+</ul>
+<p>■ 参考</p>
+<ul>
+<li><a href="https://wpdocs.osdn.jp/%E8%A8%AD%E5%AE%9A%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%AE%E4%BD%9C%E6%88%90">設定ページの作成 &#8211; WordPress Codex 日本語版</a></li>
+<li><a href="https://wpdocs.osdn.jp/%E9%96%A2%E6%95%B0%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9/settings_fields">関数リファレンス/settings fields &#8211; WordPress Codex 日本語版</a></li>
+<li><a href="https://wpdocs.osdn.jp/%E9%96%A2%E6%95%B0%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9/do_settings_sections">関数リファレンス/do settings sections &#8211; WordPress Codex 日本語版</a></li>
+</ul>
+<p>大枠こんなかんじ。</p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2019/10/1147D6D1-DB9C-4C0F-B428-BF5DEBB7810C-1024x739.png" alt="" width="1024" height="739" class="alignleft size-large wp-image-140" srcset="https://blog.hippohack.me/_cms/wp-content/uploads/2019/10/1147D6D1-DB9C-4C0F-B428-BF5DEBB7810C.png 1024w, https://blog.hippohack.me/_cms/wp-content/uploads/2019/10/1147D6D1-DB9C-4C0F-B428-BF5DEBB7810C.png 300w, https://blog.hippohack.me/_cms/wp-content/uploads/2019/10/1147D6D1-DB9C-4C0F-B428-BF5DEBB7810C.png 768w, https://blog.hippohack.me/_cms/wp-content/uploads/2019/10/1147D6D1-DB9C-4C0F-B428-BF5DEBB7810C.png 1804w" sizes="(max-width: 1000px) 100vw, 1000px" /></p>
+<p>あとは必要な処理を付け足していく感じで。</p>
+<h2>参考</h2>
+<ul>
+<li><a href="https://codex.wordpress.org/Writing_a_Plugin#Programming_Your_Plugin">Writing a Plugin « WordPress Codex</a></li>
+<li><a href="https://codex.wordpress.org/Creating_Options_Pages">Creating Options Pages « WordPress Codex</a></li>
+<li><a href="https://codex.wordpress.org/Adding_Administration_Menus">Administration Menus « WordPress Codex</a></li>
+<li><a href="https://developer.wordpress.org/plugins/">Plugin Developer Handbook | WordPress Developer Resources</a></li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">139</post-id>	</item>
+		<item>
+		<title>[wordpress] ウィジェットをつくる</title>
+		<link>https://blog.hippohack.me/web/138</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Tue, 22 Oct 2019 05:42:55 +0000</pubDate>
+				<guid isPermaLink="false">https://blog.hippohack.me/?post_type=web&#038;p=138</guid>
+
+					<description><![CDATA[function.phpに必要なコードを追記することで独自のウィジェットを作成することができる。 プラグインとおなじようにプラグインファイルとして登録することも可能。 注意 ウィジェットはサイドバーにしか出力されない。  [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>function.phpに必要なコードを追記することで独自のウィジェットを作成することができる。<br />
+プラグインとおなじようにプラグインファイルとして登録することも可能。</p>
+<ul>
+<li>注意
+<ul>
+<li>ウィジェットはサイドバーにしか出力されない。</li>
+<li>任意の場所に出力できればいいのに。。。</li>
+<li>あまり使い所がわからない。。。</li>
+</ul>
+</li>
+</ul>
+<p>ここでは、プラグイン形式で作成する。<br />
+細かい実装までは書いてないのでここからそれぞれカスタムする感じで。</p>
+<h2>ファイルヘッダー</h2>
+<ul>
+<li><code>/plugins/hoge-widget/hoge-widget.php</code> を作成。</li>
+</ul>
+<p><em class="file-name">[/plugins/hoge-widget/hoge-widget.php]</em></p>
+<pre><code>&lt;?php
+/*
+Plugin Name: My Widget
+Plugin URI: http://wordpress.org/extend/plugins/#
+Description: This is an example plugin 
+Author: Your Name
+Version: 1.0
+Author URI: http://example.com/
+*/
+</code></pre>
+<h2>WP_Widgetを継承したクラスを作成する</h2>
+<ul>
+<li><code>WP_Widget</code> を継承したクラスを作成する。</li>
+<li>継承したクラス名は <code>WP_Widget_Hoge</code> とするのがセオリーぽい。</li>
+<li>コンストラクタでオプション設定する
+<ul>
+<li>引数
+<ul>
+<li>IDのベース</li>
+<li>ウィジェット名</li>
+<li>オプション配列
+<ul>
+<li>クラス名</li>
+<li>ウィジェットの概要</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><em class="file-name">[/plugins/hoge-widget/hoge-widget.php]</em></p>
+<pre><code>class WP_Widget_HpWidget extends WP_Widget {
+
+  function  __construct() {
+    $widget_ops = array(
+      'classname' =&gt; 'hp_widget',
+      'description' =&gt; 'Test widget.',
+    );
+    parent::__construct('fuga', 'hoge', $widget_ops);
+  }
+  // ︙
+}
+</code></pre>
+<h2>設定する必要のあるメソッド（オーバーライドしないといけないメソッド）</h2>
+<ul>
+<li>form()</li>
+<li>update()</li>
+<li>widget()</li>
+</ul>
+<p><em class="file-name">[example]</em></p>
+<pre><code>function form($instance) {
+  var_dump($instance);
+  // something
+}
+
+function update($new_instance, $old_instance) {
+  $instance = $old_instance;
+  // something
+  return $instance;
+}
+
+function widget($args, $instance) {
+  if (!is_user_logged_in()) return;
+
+  extract($args);
+  $title = apply_filters('widget_title', empty($instance['title']) ? 'hoge' : $instance['title']);
+  echo $before_widget;
+
+  if ($title) {
+    echo $before_title . $title . $after_title;
+  }
+
+  echo $after_widget;
+}
+</code></pre>
+<h2>ウィジェットの登録</h2>
+<p>クラス外で実行。</p>
+<pre><code>add_action('widgets_init', function(){
+  register_widget("WP_Widget_HpWidget");
+});
+</code></pre>
+<h2>テーマをウィジェットに対応させる</h2>
+<ul>
+<li><code>sidebar.php</code> を作成。</li>
+</ul>
+<p><em class="file-name">[function.php]</em></p>
+<pre><code>if (function_exists('register_sidebar')) {
+    register_sidebar();
+}
+</code></pre>
+<p><em class="file-name">[sidebar.php]</em></p>
+<pre><code>&lt;ul&gt;
+  &lt;?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar()): ?&gt;
+    hoge
+  &lt;?php endif; ?&gt;
+&lt;/ul&gt;
+</code></pre>
+<h2>参考</h2>
+<ul>
+<li><a href="https://codex.wordpress.org/Function_Reference/register_widget">Function Reference/register widget « WordPress Codex</a></li>
+<li><a href="https://www.wpbeginner.com/wp-tutorials/how-to-create-a-custom-wordpress-widget/">How to Create a Custom WordPress Widget</a></li>
+<li><a href="https://kinsta.com/blog/create-wordpress-widget/">How to Create a WordPress Widget From Scratch</a></li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">138</post-id>	</item>
+		<item>
+		<title>[wordpress] post_nameをlike検索してマッチした投稿を取得する</title>
+		<link>https://blog.hippohack.me/web/114</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Tue, 09 Jul 2019 22:19:19 +0000</pubDate>
+				<guid isPermaLink="false">https://blog.hippohack.me/?post_type=web&#038;p=114</guid>
+
+					<description><![CDATA[標準メソッドがないぐらいなので、たぶん悪手だが必要だったのでやってみた。 global $wpdb; $search_query = "SELECT ID FROM {$wpdb-&#62;prefix}posts WHE [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>標準メソッドがないぐらいなので、たぶん悪手だが必要だったのでやってみた。</p>
+<pre><code>global $wpdb;
+$search_query = "SELECT ID FROM {$wpdb-&gt;prefix}posts WHERE post_type = 'series' AND post_name LIKE %s";
+$like = '%'.preg_split('/-\d/', $post-&gt;post_name)[0].'%';
+$results = $wpdb-&gt;get_results($wpdb-&gt;prepare($search_query, $like));
+
+foreach($results as $key =&gt; $obj){
+  $ids[] = $obj-&gt;ID;
+}
+
+$series_posts = get_posts([
+  'post_type' =&gt; 'series',
+  'order'=&gt;'ASC',
+  'post__in' =&gt; $ids
+]);
+</code></pre>
+<p>特定のカラムで検索できるメソッドがあってもいいような気もする。ひょっとしたらあるのかも？</p>
+<p>likeの条件やポストタイプなんかは適宜変更で。</p>
+<h2>参考</h2>
+<blockquote>
+<p>wordpress how to get post with like search</p>
+</blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/questions/25103949/wordpress-get-posts-by-title-like#26849091">get &#8211; WordPress get_posts by title like &#8211; Stack Overflow</a></li>
+<li><a href="https://codex.wordpress.org/Class_Reference/wpdb">Class Reference/wpdb « WordPress Codex</a></li>
+<li><a href="https://developer.wordpress.org/reference/classes/wpdb/get_results/">wpdb::get_results() | Method | WordPress Developer Resources</a></li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">114</post-id>	</item>
+		<item>
+		<title>[wordpress] ブログのパフォーマンス改善チャレンジメモ</title>
+		<link>https://blog.hippohack.me/web/91</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Sat, 06 Jul 2019 07:29:23 +0000</pubDate>
+				<guid isPermaLink="false">https://blog.hippohack.me/?post_type=web&#038;p=91</guid>
+
+					<description><![CDATA[Chromeエクステンションの「Lighthouse」でパフォーマンスチェックしてみた。 改善するため実施したことの雑なメモ。 ↓ 2019/06/16時点のLighthouseでの評価。パフォーマンスがやばいぐらいクソ [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>Chromeエクステンションの「Lighthouse」でパフォーマンスチェックしてみた。</p>
+<p>改善するため実施したことの雑なメモ。</p>
+<p>↓ 2019/06/16時点のLighthouseでの評価。パフォーマンスがやばいぐらいクソやな。</p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2019/07/823148D0-5C1C-40BC-AF45-3448A104D7FF-300x91.png" alt="" width="300" height="91" class="alignnone size-medium wp-image-92" srcset="https://blog.hippohack.me/_cms/wp-content/uploads/2019/07/823148D0-5C1C-40BC-AF45-3448A104D7FF.png 300w, https://blog.hippohack.me/_cms/wp-content/uploads/2019/07/823148D0-5C1C-40BC-AF45-3448A104D7FF.png 768w, https://blog.hippohack.me/_cms/wp-content/uploads/2019/07/823148D0-5C1C-40BC-AF45-3448A104D7FF.png 1024w, https://blog.hippohack.me/_cms/wp-content/uploads/2019/07/823148D0-5C1C-40BC-AF45-3448A104D7FF.png 1576w" sizes="(max-width: 300px) 100vw, 300px" /></p>
+<h2>プラグインで対応</h2>
+<ul>
+<li>Imagify
+<ul>
+<li>画像データをwebPに置き換えてくれる</li>
+</ul>
+</li>
+<li>Autoptimize
+<ul>
+<li>ミニファイしてheadに読み込む設定など</li>
+</ul>
+</li>
+</ul>
+<h2>テキストデータのgzip読み込み</h2>
+<h3>参考</h3>
+<ul>
+<li>Enable Text Compression | Tools for Web Developers | Google Developers</li>
+<li>
+<p><a href="https://developers.google.com/web/tools/lighthouse/audits/text-compression?utm_source=lighthouse&amp;utm_medium=extension">https://developers.google.com/web/tools/lighthouse/audits/text-compression?utm_source=lighthouse&amp;utm_medium=extension</a></p>
+</li>
+<li>
+<p>テキストベースのアセットのエンコードと転送サイズの最適化 | Web Fundamentals | Google Developers</p>
+</li>
+<li>
+<p><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer">https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer</a></p>
+</li>
+<li>
+<p>gzip圧縮でCSSやJSなどの転送量を減らす方法</p>
+</li>
+<li><a href="https://syncer.jp/how-to-make-gzip">https://syncer.jp/how-to-make-gzip</a></li>
+</ul>
+<p>とりま、コピペではってみた。</p>
+<pre><code># gzip compression
+SetOutputFilter DEFLATE
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+BrowserMatch ^Mozilla/4\.0[678] no-gzip
+BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
+SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|ico)$ no-gzip dont-vary
+Header append Vary User-Agent env=!dont-vary
+
+↓ これはエラー
+# zlib.output_compression = On
+</code></pre>
+<p><code>zlib.output_compression = On</code> はエラー。</p>
+<p>さくらではだめ？？</p>
+<h2>webfontのfont-display設定</h2>
+<ul>
+<li>
+<p><a href="https://developers.google.com/web/updates/2016/02/font-display?utm_source=lighthouse&amp;utm_medium=extension">https://developers.google.com/web/updates/2016/02/font-display?utm_source=lighthouse&amp;utm_medium=extension</a></p>
+</li>
+<li>
+<p>「Google Fonts」にfont-displayを適用する方法 | 東京上野のWeb制作会社LIG</p>
+</li>
+<li><a href="https://liginc.co.jp/441102">https://liginc.co.jp/441102</a></li>
+</ul>
+<p>リクエストのオプションでは設定できないみたい。</p>
+<ul>
+<li>Google Fonts and font-display | CSS-Tricks</li>
+<li><a href="https://css-tricks.com/google-fonts-and-font-display/">https://css-tricks.com/google-fonts-and-font-display/</a></li>
+</ul>
+<p>@font-feature-valuesでカバーできる？</p>
+<ul>
+<li>Google Fonts And Font-display</li>
+<li>
+<p><a href="https://pixallus.com/google-fonts-and-font-display/">https://pixallus.com/google-fonts-and-font-display/</a></p>
+</li>
+<li>
+<p>CSS Fonts Module Level 4</p>
+</li>
+<li><a href="https://www.w3.org/TR/css-fonts-4/#font-display-font-feature-values">https://www.w3.org/TR/css-fonts-4/#font-display-font-feature-values</a></li>
+</ul>
+<h2>Cache-Control</h2>
+<ul>
+<li>
+<p><a href="https://developers.google.com/web/tools/lighthouse/audits/cache-policy?utm_source=lighthouse&amp;utm_medium=extension">https://developers.google.com/web/tools/lighthouse/audits/cache-policy?utm_source=lighthouse&amp;utm_medium=extension</a></p>
+</li>
+<li>
+<p>キャッシュについて整理 &#8211; Qiita</p>
+</li>
+<li><a href="https://qiita.com/anchoor/items/2dc6ab8347c940ea4648">https://qiita.com/anchoor/items/2dc6ab8347c940ea4648</a></li>
+</ul>
+<p><em class="file-name"><code>&lt;head&gt;</code></em></p>
+<pre><code>&lt;meta http-equiv="Cache-Control" content="max-age=31557600"&gt;
+</code></pre>
+<h2>preconnect</h2>
+<p><code>Consider adding preconnect or dns-prefetch resource hints to establish early connections to important third-party origins.</code></p>
+<ul>
+<li>リソースの優先度付け &#8211; ブラウザの有用性を高める | Web Fundamentals | Google Developers</li>
+<li><a href="https://developers.google.com/web/fundamentals/performance/resource-prioritization?utm_source=lighthouse&amp;utm_medium=extension#preconnect">https://developers.google.com/web/fundamentals/performance/resource-prioritization?utm_source=lighthouse&amp;utm_medium=extension#preconnect</a></li>
+</ul>
+<p>愚直についかしてみた。</p>
+<p><em class="file-name"><code>&lt;head&gt;</code></em></p>
+<pre><code>&lt;link rel="preconnect" href="https://www.googletagservices.com"&gt;
+&lt;link rel="preconnect" href="https://googleads.g.doubleclick.net"&gt;
+&lt;link rel="preconnect" href="https://www.google-analytics.com"&gt;
+&lt;link rel="preconnect" href="https://adservice.google.co.jp"&gt;
+</code></pre>
+<p>ここまでで、</p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2019/07/FE31E8CE-1059-4041-BB17-F1DFBF80B314-300x90.png" alt="" width="300" height="90" class="alignnone size-medium wp-image-94" srcset="https://blog.hippohack.me/_cms/wp-content/uploads/2019/07/FE31E8CE-1059-4041-BB17-F1DFBF80B314.png 300w, https://blog.hippohack.me/_cms/wp-content/uploads/2019/07/FE31E8CE-1059-4041-BB17-F1DFBF80B314.png 768w, https://blog.hippohack.me/_cms/wp-content/uploads/2019/07/FE31E8CE-1059-4041-BB17-F1DFBF80B314.png 1024w, https://blog.hippohack.me/_cms/wp-content/uploads/2019/07/FE31E8CE-1059-4041-BB17-F1DFBF80B314.png 1666w" sizes="(max-width: 300px) 100vw, 300px" /></p>
+<p>だいぶ変わったけどまだ低いなー。</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">91</post-id>	</item>
+		<item>
+		<title>管理画面｜カスタム投稿一覧にタクソノミーを表示する実装例 &#8211; #wordpress</title>
+		<link>https://blog.hippohack.me/web/70</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Sat, 08 Sep 2018 14:34:56 +0000</pubDate>
+				<guid isPermaLink="false">http://blog.hippohack.test/?post_type=web&#038;p=70</guid>
+
+					<description><![CDATA[２つのタクソノミーを追加した際の例 実装例 [function.php] function manage_custom_post_th($columns) { unset($columns['date']); // 順番 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<ul>
+<li>
+<div>２つのタクソノミーを追加した際の例</div>
+</li>
+</ul>
+<h2>実装例</h2>
+<p><em class="file-name">[function.php]</em></p>
+<pre><code>function manage_custom_post_th($columns) {
+    unset($columns['date']); // 順番入れ替えのため一旦unset
+    $columns['code'] = "コード";
+    $columns['genre'] = "ジャンル";
+    $columns['date'] = "日付";
+    return $columns;
+}
+add_filter( 'manage_edit-MYPOSTTYPE_columns', 'manage_custom_post_th' );
+
+function manage_custom_post_td($column_name, $post_id) {
+    if( $column_name == 'code' ) {
+        $terms = get_the_terms($post_id, 'code');
+        if ($terms) {
+            $category = array_shift($terms);
+            echo $category-&gt;name;
+        }
+    }
+    if( $column_name == 'genre' ) {
+        $terms = get_the_terms($post_id, 'genre');
+        if ($terms) {
+            $category = array_shift($terms);
+            echo $category-&gt;name;
+        }
+    }
+}
+add_action( 'manage_MYPOSTTYPE_posts_custom_column', 'manage_custom_post_td', 10, 2 );</code></pre>
+<h3>表示</h3>
+<p><img class="aligncenter wp-image-1052 size-full" src="https://www.start30blog.com/_blog/wp-content/uploads/2018/09/AAFECC62-B56C-4EC2-A27E-9E9ED47AD65D.png" alt="" width="1228" height="570" /></p>
+<h2>参考にさせていただいたサイト</h2>
+<ul>
+<li><a href="https://www.dsm-update.info/wordpress/433/" target="_blank" rel="noopener noreferrer">WordPress管理画面のカスタム投稿の投稿一覧に表示する項目を追加するカスタマイズ｜WEBサイトに関わるあれこれ</a></li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">70</post-id>	</item>
+		<item>
+		<title>カスタムクエリーでプラグイン「WP-Pagenavi」のリンクが作動しない問題</title>
+		<link>https://blog.hippohack.me/web/68</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Sat, 01 Sep 2018 14:32:24 +0000</pubDate>
+				<guid isPermaLink="false">http://blog.hippohack.test/?post_type=web&#038;p=68</guid>
+
+					<description><![CDATA[経緯 ページネーションのリンク叩いても常に一ページ目が表示される問題が発生。 クエリに【paged】を追加することで解消する。 実装例 $paged = get_query_var( 'paged' ) ? get_qu [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h2>経緯</h2>
+<ul>
+<li>
+<div>
+      ページネーションのリンク叩いても常に一ページ目が表示される問題が発生。
+    </div>
+</li>
+<li></li>
+</ul>
+<div>
+      クエリに【paged】を追加することで解消する。
+    </div>
+<h2>実装例</h2>
+<pre><code>$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
+if ( $_GET['category'] &amp;&amp; $_GET['category'] !== "" ) {
+    query_posts('category_name='.$_GET['category'] . '&amp;posts_per_page=8&amp;paged='.$paged);
+} else {
+    query_posts('category_name=hoge,fuga,piyo&amp;posts_per_page=8&amp;paged='.$paged);
+}
+</code></pre>
+<h2>参考にさせていただいたサイト</h2>
+<ul>
+<li><a href="https://wordpress.stackexchange.com/questions/53514/pagenavigation-not-showing-the-next-page-just-linking-back-to-the-main-page" target="_blank" rel="noopener noreferrer">pagination &#8211; pagenavigation not showing the next page just linking back to the main page &#8211; WordPress Development Stack Exchange</a></li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">68</post-id>	</item>
+	</channel>
+</rss>

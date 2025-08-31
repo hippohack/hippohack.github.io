@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>#Blackberry &#8211; HippoBlog</title>
+	<atom:link href="https://blog.hippohack.me/hashtag/blackberry/feed" rel="self" type="application/rss+xml" />
+	<link>https://blog.hippohack.me</link>
+	<description>Web開発に関する備忘録や日々の雑記ブログ</description>
+	<lastBuildDate>Sun, 07 Jul 2019 03:26:19 +0000</lastBuildDate>
+	<language>ja</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.7.13</generator>
+
+<image>
+	<url>https://blog.hippohack.me/_cms/wp-content/uploads/2021/03/image.jpg</url>
+	<title>#Blackberry &#8211; HippoBlog</title>
+	<link>https://blog.hippohack.me</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">190967550</site>	<item>
+		<title>BlackBerryにリーク版OSのインストールの仕方でだいぶ手間取ったのでまとめてみた。</title>
+		<link>https://blog.hippohack.me/note/49</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Thu, 23 Apr 2015 14:20:01 +0000</pubDate>
+				<guid isPermaLink="false">http://blog.hippohack.test/?post_type=note&#038;p=49</guid>
+
+					<description><![CDATA[先日私のBlackBerryにはもう公式アップデートは降ってこないだろうと決めつけリーク版OSを入れてみました。 手間取ったり、どこにリーク版OSがあるかわからなかったり、インストールに失敗して、BlackBerryがた [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>先日私のBlackBerryにはもう公式アップデートは降ってこないだろうと決めつけリーク版OSを入れてみました。</p>
+<p>手間取ったり、どこにリーク版OSがあるかわからなかったり、インストールに失敗して、BlackBerryがただの塊になったりしましたので、もう失敗しないようにとまとめておきます。</p>
+<p>手順を簡単に書きますと、</p>
+<ul>
+<li>①Autoloaderを用意する。 </li>
+<li>②バックアップをとっておく </li>
+<li>③用意したAutoloaderをWindowsPCで起動する </li>
+<li>④PCにデバイスを接続する </li>
+<li>⑤自動的にインストールがはじまるので待つ </li>
+<li>⑥再起動する </li>
+<li>⑦セットアップがはじまる </li>
+</ul>
+<p>簡単ぽいすね。</p>
+<h3>Autoloaderをダウンロードしておく</h3>
+<p>OSのバージョンごとに自動的にアップデートをしてくれるAutoloaderというアプリケーションを用意しておきます。</p>
+<p>リーク版OSですの必ずここにある、というものではないようです。 私はここからダウンロードしました。</p>
+<p><a href="http://forums.crackberry.com/bb10-leaked-beta-os-f395/os-10-3-1-2726-live-links-1012656/" target="_blank" rel="noopener noreferrer">CrackBerry Forums</a></p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2015/04/img02-22-04-2015.jpg" alt="img02-22-04-2015" width="640" height="183" class="aligncenter size-full wp-image-461" /></p>
+<p>このページの中でもどんどん新しい物がでるたびに更新されているようなので随時探してみてください。</p>
+<p>アプリケーションの起動はPCで行います。しかもWindows限定です。 ダウンロード時のタイムアウトにはご注意ください。</p>
+<h3>バックアップをとっておく</h3>
+<p>OSのインストール時には端末が初期化されるので面倒がないようにバックアップをとっておくことをおすすめします。</p>
+<p>バックアップはBlackBerry linkを使って行うことができます。 ここから落とせます。 → <a href="http://global.blackberry.com/en/software/desktop/blackberry-link.html" target="_blank" rel="noopener noreferrer">BlackBerry Link</a></p>
+<p>インストール後、端末をPCにつないで、バックアップを選択。</p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2015/04/img03-22-04-2015.jpg" alt="img03-22-04-2015" width="640" height="349" class="aligncenter size-full wp-image-462" /></p>
+<p>これでPCにバックアップデータが保存されます。</p>
+<h3>PCでAutoloaderを起動</h3>
+<p>一旦PCからBlackBerry を抜いておきます。</p>
+<p>先ほどダウンロードしたAutoloaderをPCで起動します。 起動するとターミナル画面のような黒い画面が立ち上がり、自動的にインストールの作業をしてくれます。</p>
+<p>つらつらと文字列が並びましたら途中でConnect device的な文言で作業が止まります。 そのタイミングでBlackBerry をPCに接続します。</p>
+<p>すると作業が再開し、作業進捗が100%になりましたらデバイスが再起動します。</p>
+<p>再度立ち上がる時にはもうOS10.3がインストールされているはずです。 ここから初期設定がはじまるかんじです。 OS10.3であればもちろん最初から日本語を選択できますので設定も簡単です。</p>
+<p><br clear="all" /></p>
+<p>最後に注意点として、リーク版OSのインストールは非正規のアップデート方法です。</p>
+<p>アップデートされる際には予期せぬ事態に陥る可能性もございます。</p>
+<p>自分も実際事故りましたので十分ご注意の上自己責任で行っていただきますようお願いいたします。</p>
+<p>それでは〜</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">49</post-id>	</item>
+		<item>
+		<title>BlackBerryOS10.3に上げて設定が初期化されてしまったので思い出す意味でAndroidアプリ導入方法をまとめてみる</title>
+		<link>https://blog.hippohack.me/note/50</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Wed, 22 Apr 2015 14:20:26 +0000</pubDate>
+				<guid isPermaLink="false">http://blog.hippohack.test/?post_type=note&#038;p=50</guid>
+
+					<description><![CDATA[OSが10.3になったことによってAmazonのアプリストアが標準でインストールされているのでそこから簡単にAndroidアプリをインストールすることができるようになりましたが、残念ながら結構な必須アプリがAmazonス [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>OSが10.3になったことによってAmazonのアプリストアが標準でインストールされているのでそこから簡単にAndroidアプリをインストールすることができるようになりましたが、残念ながら結構な必須アプリがAmazonストアにはなかったりします。</p>
+<p>なんやったかはわすれました。</p>
+<p>そんなときにはやっぱりOS10.2のころにやっていた方法が必要になります。</p>
+<p>先のOS再インストール事件によってすべて初期化されてしまったので思い出す意味でAndroidアプリ導入方法をまとめておきます。</p>
+<p>方法はなにやらいろいろあるみたいですが、今回は2つまとめてみます。</p>
+<ul>
+<li>①Webサービスを使ってダウンロードしてくる。 </li>
+<li>②疑似Androidアプリストア的なアプリを使ってダウンロードしてくる。 </li>
+</ul>
+<h3>まずは、外部アプリのインストールを許可する設定。</h3>
+<p>設定 → アプリマネージャー → アプリをインストール → 他のソースからのアプリのインストールを許可をオンに。</p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2015/04/img01.jpg" alt="img01" width="640" height="640" class="aligncenter size-full wp-image-447" /></p>
+<p>これでBlackBerry world以外からダウンロードしたアプリもインストールできる設定になります。</p>
+<h3>Google playをapkファイルに書き換えてダウンロード</h3>
+<p>この方法では<a href="http://apps.evozi.com/apk-downloader/" target="_blank" rel="noopener noreferrer">Apk Downloader</a>というWebサービスを使います。</p>
+<p>このページで<a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer">Google play</a>にあるアプリのapkファイルを生成しダウンロードします。</p>
+<p>手順として、Google playのダウンロードしたいアプリのページのURLをコピー。 ここにURLを貼り付け。</p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2015/04/img03.jpg" alt="img03" width="640" height="640" class="aligncenter size-full wp-image-449" /></p>
+<p>apkファイルが生成されるので、ダウンロード。 ここをタップ。</p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2015/04/img02.jpg" alt="img02" width="640" height="640" class="aligncenter size-full wp-image-448" /></p>
+<p>ダウンロードしたファイルを開くとインストールがはじまります。 当たり前ですが、この方法では有料アプリの取得は不可です。</p>
+<p>また、まれにだとは思いますが対応できないアプリもあるみたいですね。 自分も使っていてファイル生成できないものがありました。なんだったかは忘れました。</p>
+<p>ストアアプリを入れる必要もなく、このアプリで完結できるのは大変便利な点ですね。</p>
+<h3>Androidアプリを検索・ダウンロードできるストアアプリをインストールする</h3>
+<p>２つ目にBlackBerryの端末にストアアプリをインストールしてアプリケーションで検索からインストールまで完結させる方法。</p>
+<p>「SNAP」というアプリケーションを使います。 導入にあたってちょいと手間があります。 まずPCが必要です。なおかつブラウザのGoogle chromeを用意します。</p>
+<p>Chromeのダウンロードページは<a href="https://www.google.co.jp/chrome/browser/desktop/index.html" target="_blank" rel="noopener noreferrer">こちら</a></p>
+<p>さらにChromeにインストールするプラグイン『BB10 playbook app manager』が必要です。</p>
+<p>ダウンロードページは<a href="https://chrome.google.com/webstore/detail/bb10-playbook-app-manager/kmbaalodpmjjhpobkgljnelbpblnikkp" target="_blank" rel="noopener noreferrer">こちら</a>。</p>
+<p>インストールする『SNAP』のbarファイルを用意します。</p>
+<p>ダウンロードは<a href="http://redlightoflove.com/snap/" target="_blank" rel="noopener noreferrer">こちら</a>から。</p>
+<p>chromeでインストールしたプラグインを開くとこんな画面が開きます。 で、ここに端末のIPアドレスを打ち込みます。</p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2015/04/img05.jpg" alt="img05" width="640" height="354" class="aligncenter size-full wp-image-451" /></p>
+<p>IPアドレスの確認はデバイスで、設定 → セキュリティーとプライバシー → 開発モードで確認できます。</p>
+<p>合わせて開発モードをONにしてPCにBlackberryをつなぎます。 Wi-Fiのネットワークで接続できるみたいですが、USBでつないだ方が手っ取り早いかもです。 IPアドレスを入力、デバイスのパスワードを入れてアクセス許可。 ここでchromeのセキュリティで弾かれるかもしれませんが、詳細から進んで回避できます。</p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2015/04/img06.jpg" alt="img06" width="640" height="321" class="aligncenter size-full wp-image-452" /></p>
+<p>【Install apps】から先ほどダウンロードしておいたSnapのbarファイルを差し込みます。</p>
+<p>これでインストールが完了しホーム画面にSnapがいるはずです。</p>
+<p>インストールが完了しましたら、アプリを立ち上げGoogleアカウントでログインします。</p>
+<p>そこからは使い慣れたアプリストア同様、簡単にAndroidアプリを手に入れる事ができます。</p>
+<p>やっぱりなんだかんだSnapが便利ですかね。検索もダウンロードもまとめてできるのは。 欠点としてはアプリのアップデートがそれぞれめんどくさい。バッチもでなけりゃ通知もない。自分からキャッチしに行く感じです。 このへんが本家のAndroidや、iOSと比べて不便なところではありますね。 マジもうちょっとだけ普及してほしい、BlackBerry。。。</p>
+<p>ではー。</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">50</post-id>	</item>
+	</channel>
+</rss>

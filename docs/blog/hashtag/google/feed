@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>#Google &#8211; HippoBlog</title>
+	<atom:link href="https://blog.hippohack.me/hashtag/google/feed" rel="self" type="application/rss+xml" />
+	<link>https://blog.hippohack.me</link>
+	<description>Web開発に関する備忘録や日々の雑記ブログ</description>
+	<lastBuildDate>Tue, 02 Jul 2019 13:12:42 +0000</lastBuildDate>
+	<language>ja</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.7.13</generator>
+
+<image>
+	<url>https://blog.hippohack.me/_cms/wp-content/uploads/2021/03/image.jpg</url>
+	<title>#Google &#8211; HippoBlog</title>
+	<link>https://blog.hippohack.me</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">190967550</site>	<item>
+		<title>みんな知ってた？恥ずかしながら私は最近知った「Google」のAnd、Or、Not検索</title>
+		<link>https://blog.hippohack.me/note/44</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Fri, 26 Jun 2015 14:16:21 +0000</pubDate>
+				<guid isPermaLink="false">http://blog.hippohack.test/?post_type=note&#038;p=44</guid>
+
+					<description><![CDATA[よく使う機会としてはヤフオクやらメルカリやらで条件を選んで検索をするってことがあるかと思いますが、その際検索に引っ掛けたくない単語がありますわね。 ヤフオクなんかではしっかり除外する単語の入力欄があります。 これはすごい [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>よく使う機会としてはヤフオクやらメルカリやらで条件を選んで検索をするってことがあるかと思いますが、その際検索に引っ掛けたくない単語がありますわね。</p>
+<p>ヤフオクなんかではしっかり除外する単語の入力欄があります。 これはすごい便利なんですよね。 例えば、ヤフオクでiPhoneを検索すると、なんかえたいのしれないケースやらジャンク品やらがひっかかってくるわけです。</p>
+<p>そんな時に使う除外検索。 除外したい単語を入力欄に打ち込んで検索をします。</p>
+<p>除外欄にケース、ジャンクを打ち込んで検索すればえたいのしれないものは検索にひっかかってきません。 すっきり。</p>
+<p>はい。 で、今回はGoogleの検索について。</p>
+<h3>Googleは基本、AND検索</h3>
+<p>場合によっては関連の強いものを検索したりとか変に優秀なときもありますが。 検索したい単語をスペースで区切って検索します。 例えば、Wordpress 便利 プラグイン であれば、Wordpressの便利なプラグインは検索できそうなもんですよね。 そう、入力したすべての単語を含む検索をしてくれるのがAnd検索。</p>
+<h3>OR検索</h3>
+<p>次に、or検索です。 指定した単語、もしくはさらに別に指定した単語。という具合にいずれかの単語を含む検索をしてくれます。 例えば、Dreamweaver OR sublimetext で検索すればどちらかの単語がひっかかる検索をしてくれます。 単語と単語の間に「OR」を指定します。 今日のランチは肉か魚だなってことでしたら、 肉　OR　魚　で　エンターです。 肉か魚の美味しいお店が検索できんじゃないですか。 Googleではあんまり使わないですかね。ORは。</p>
+<h3>NOT検索</h3>
+<p>で、今回自分がお世話になったのがこのNOT検索です。 指定した単語を除外して検索してくれるわけですね。</p>
+<p>先日Wordpressの勉強をしておりましたら先輩からカスタム投稿をプラグインなしで実装しろとおたっしをいただきまして、ワオッなんて思いながらGoogleで検索してみるわけです。 「Wordpress 　カスタム投稿」で検索。</p>
+<p>そらもう、上位はプラグインのページばっかりですわ。 いらない情報ばかりが検索にひっかかっちゃうわけです。 下位ページまで正直みないですしね！ そこで世の中にはNot検索という言葉があることを思いだしたんですね。 前の職場では商品検索のためNot検索よく使ってたのに、言われてみればGoogleでNot検索つかったことってなかったです。 Not検索に関しては、Not とはうちません。 除外したい単語の前に「-」半角ハイフンをうちます。</p>
+<p>WordPress カスタム投稿 -プラグイン　で検索。 すると、プラグインを含まない検索結果が表示されます。 素敵。 インターネットでNot検索って案外優良な情報も除外しちゃってんじゃないかなって気にもなりますが。 インターネット使い始めてもう多分15年ぐらい経つかもですが、ようやく知る事ができました。 知ってて当たり前だよって内容だとしたら恥ずかしくてしかたありません。 やっぱりGoogleって便利でした。 よかったらいろいろ試してみてください。</p>
+<p>ではっ</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">44</post-id>	</item>
+	</channel>
+</rss>

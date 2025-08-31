@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>#Ruby &#8211; HippoBlog</title>
+	<atom:link href="https://blog.hippohack.me/hashtag/ruby/feed" rel="self" type="application/rss+xml" />
+	<link>https://blog.hippohack.me</link>
+	<description>Web開発に関する備忘録や日々の雑記ブログ</description>
+	<lastBuildDate>Wed, 12 Feb 2020 21:50:28 +0000</lastBuildDate>
+	<language>ja</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.7.13</generator>
+
+<image>
+	<url>https://blog.hippohack.me/_cms/wp-content/uploads/2021/03/image.jpg</url>
+	<title>#Ruby &#8211; HippoBlog</title>
+	<link>https://blog.hippohack.me</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">190967550</site>	<item>
+		<title>[ruby] ハッシュ作成時に同じキーがあったら配列にして格納する</title>
+		<link>https://blog.hippohack.me/web/146</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Wed, 12 Feb 2020 21:41:55 +0000</pubDate>
+				<guid isPermaLink="false">https://blog.hippohack.me/?post_type=web&#038;p=146</guid>
+
+					<description><![CDATA[📋スニペット ハッシュ作成時に同じキーがあったら配列にして格納する。 [hoge.rb] matches = {} array = [100, 99, 98, 0, 0, 0, 1, 2, 3] array.each d [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h2>📋スニペット</h2>
+<p>ハッシュ作成時に同じキーがあったら配列にして格納する。</p>
+<p><em class="file-name">[hoge.rb]</em></p>
+<pre><code>matches = {}
+array = [100, 99, 98, 0, 0, 0, 1, 2, 3]
+
+array.each do |a|
+  p a if a == 0
+  if a == 0
+    matches[a] = Array.new unless matches[a].class == Array
+    matches[a].push a
+  else
+    matches[a] = a
+  end
+end
+
+p matches
+</code></pre>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">146</post-id>	</item>
+		<item>
+		<title>ターミナル（CUI）からツイートする。Twitterクライアント『ｔ』</title>
+		<link>https://blog.hippohack.me/web/69</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Mon, 13 Aug 2018 14:33:19 +0000</pubDate>
+				<guid isPermaLink="false">http://blog.hippohack.test/?post_type=web&#038;p=69</guid>
+
+					<description><![CDATA[rubyのgem『t』使ってターミナル上からツイートをする。 インストール 実行環境には、ラズパイのラズビアンで実施。環境によって動作など違いがあるかも。 環境にRubyが必要。 Rubyのインストール まずはRubyの [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>rubyのgem『t』使ってターミナル上からツイートをする。</p>
+<h2>インストール</h2>
+<p>実行環境には、ラズパイのラズビアンで実施。環境によって動作など違いがあるかも。</p>
+<p>環境にRubyが必要。</p>
+<h3>Rubyのインストール</h3>
+<p>まずはRubyのインストール。</p>
+<p><a href="https://www.ruby-lang.org/ja/documentation/installation/" target="_blank" rel="noopener noreferrer">https://www.ruby-lang.org/ja/documentation/installation/</a></p>
+<pre><code>$ sudo apt-get install ruby
+</code></pre>
+<p>その後『t』のgemをインストール</p>
+<pre><code>$ sudo gem install t
+</code></pre>
+<p>なんかエラー。拡張がビルドできないと。</p>
+<pre><code>Building native extensions.  This could take a while...
+ERROR:  Error installing t:
+ERROR: Failed to build gem native extension.
+
+/usr/bin/ruby2.1 extconf.rb
+mkmf.rb can't find header files for ruby at /usr/lib/ruby/include/ruby.h
+
+extconf failed, exit code 1
+</code></pre>
+<p>tのgithubページを確認。</p>
+<ul>
+<li>
+<p>sferik/t: A command-line power tool for Twitter. <a href="https://github.com/sferik/t" target="_blank" rel="noopener noreferrer">https://github.com/sferik/t</a></p>
+<p>$ sudo apt-get install ruby-dev</p>
+</li>
+</ul>
+<p>なんかこっち入れるみたい。バージョンの問題だろうか。</p>
+<p>で、再度。</p>
+<pre><code>$ sudo gem install t
+</code></pre>
+<h2>Twitterのサイトでアプリケーション登録</h2>
+<p>項目が４つほどあるが、適当にうった。</p>
+<ul>
+<li>Create an application | Twitter Application Management <a href="https://apps.twitter.com/app/new" target="_blank" rel="noopener noreferrer">https://apps.twitter.com/app/new</a> </li>
+</ul>
+<p>Twitter側で設定したら、以下のコマンドを実行し認証設定する。</p>
+<pre><code>$ t authorize
+</code></pre>
+<ul>
+<li>api key</li>
+<li>api secret</li>
+<li>pin</li>
+</ul>
+<p>それぞれコマンドからブラウザを開いて設定。</p>
+<h2>ツイートしてみる</h2>
+<h3>通常ツイート</h3>
+<pre><code>$ t update 'test tweet'
+Tweet posted by @hippohack.
+</code></pre>
+<h3>ダイレクトメッセージ</h3>
+<pre><code>$ t update 'd @hippohack test tweet'
+Tweet posted by @hippohack.
+</code></pre>
+<p>他にもいろいろコマンドが用意されているので下記ページをチェック</p>
+<ul>
+<li>sferik/t: A command-line power tool for Twitter. <a href="https://github.com/sferik/t" target="_blank" rel="noopener noreferrer">https://github.com/sferik/t</a> </li>
+</ul>
+<h2>参考サイト</h2>
+<ul>
+<li>Twitterクライアントtを使ってオレオレBufferを作る <a href="https://rn4ru.com/blog/posts/my-own-bufferapp-twitter-t/" target="_blank" rel="noopener noreferrer">https://rn4ru.com/blog/posts/my-own-bufferapp-twitter-t/</a></li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">69</post-id>	</item>
+	</channel>
+</rss>

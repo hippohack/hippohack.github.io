@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>#etc &#8211; HippoBlog</title>
+	<atom:link href="https://blog.hippohack.me/hashtag/etc/feed" rel="self" type="application/rss+xml" />
+	<link>https://blog.hippohack.me</link>
+	<description>Web開発に関する備忘録や日々の雑記ブログ</description>
+	<lastBuildDate>Thu, 27 May 2021 01:08:50 +0000</lastBuildDate>
+	<language>ja</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.7.13</generator>
+
+<image>
+	<url>https://blog.hippohack.me/_cms/wp-content/uploads/2021/03/image.jpg</url>
+	<title>#etc &#8211; HippoBlog</title>
+	<link>https://blog.hippohack.me</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">190967550</site>	<item>
+		<title>fishのテーマを変更する</title>
+		<link>https://blog.hippohack.me/web/211</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Sun, 28 Mar 2021 06:04:42 +0000</pubDate>
+				<guid isPermaLink="false">https://blog.hippohack.me/?post_type=web&#038;p=211</guid>
+
+					<description><![CDATA[やったこと fisher install curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish theme  [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h2>やったこと</h2>
+<ul>
+<li>fisher install</li>
+</ul>
+<pre><code class="sh">curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish 
+</code></pre>
+<ul>
+<li>theme install</li>
+</ul>
+<pre><code class="sh">fisher add oh-my-fish/theme-default  
+fisher: Unknown flag or command: "add" (see `fisher -h`)
+</code></pre>
+<p>どうもコマンドが変わったらしい。</p>
+<pre><code class="sh">fisher -h                                                                                         
+Usage: fisher install &lt;plugins...&gt;  Install plugins
+       fisher remove  &lt;plugins...&gt;  Remove installed plugins
+       fisher update  &lt;plugins...&gt;  Update installed plugins
+       fisher update                Update all installed plugins
+       fisher list    [&lt;regex&gt;]     List installed plugins matching regex
+Options:
+       -v or --version  Print version
+       -h or --help     Print this help message
+</code></pre>
+<ul>
+<li>remove</li>
+</ul>
+<pre><code class="sh">fisher remove oh-my-fish/theme-bobthefish
+</code></pre>
+<ul>
+<li>install</li>
+</ul>
+<pre><code class="sh">fisher install oh-my-fish/theme-default
+</code></pre>
+<p>気にいらんかったので、batmanにした</p>
+<ul>
+<li>https://github.com/oh-my-fish/oh-my-fish/blob/master/docs/Themes.md#batman</li>
+</ul>
+<pre><code class="sh">fisher install oh-my-fish/theme-batman  
+</code></pre>
+<h2>参考</h2>
+<ul>
+<li><a href="https://qiita.com/minako-ph/items/dba6d65b741e3a30ad16">【2019年版】macのターミナルにFishとFishermanを導入する &#8211; Qiita</a></li>
+<li><a href="https://qiita.com/wadaaaan/items/723a9a40925d4a97808a#fisher%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">【ターミナル】Macのターミナルにfishを導入する &#8211; Qiita</a></li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">211</post-id>	</item>
+		<item>
+		<title>WiFi6 x メッシュWiFi が快適すぎてビックリした</title>
+		<link>https://blog.hippohack.me/note/203</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Fri, 19 Mar 2021 15:30:32 +0000</pubDate>
+				<guid isPermaLink="false">https://blog.hippohack.me/?post_type=note&#038;p=203</guid>
+
+					<description><![CDATA[自宅のインターネット回線環境を改善しようと、eoのメッシュWiFiルーターのレンタルのオプションを申し込んだ。 結論、めちゃめちゃ改善された。 今まで古い？AirMac Expressを利用していたのでカテゴリー？が、1 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>自宅のインターネット回線環境を改善しようと、eoのメッシュWiFiルーターのレンタルのオプションを申し込んだ。</p>
+<p>結論、めちゃめちゃ改善された。</p>
+<p>今まで古い？AirMac Expressを利用していたのでカテゴリー？が、11nまでの対応？だった。 これが、WiFi6且つメッシュになったので早いし広いし安定する。</p>
+<p>変更する前は、fast.comで調べた結果出て30Mbpsだった。 これが、250Mbps出るようになった。いいときは400Mbpsとかでる。</p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2021/03/852c0dc9c09b58f6d0d2b24cf8ea8146-1024x642.png" alt="" width="1024" height="642" class="aligncenter size-large wp-image-206" srcset="https://blog.hippohack.me/_cms/wp-content/uploads/2021/03/852c0dc9c09b58f6d0d2b24cf8ea8146.png 1024w, https://blog.hippohack.me/_cms/wp-content/uploads/2021/03/852c0dc9c09b58f6d0d2b24cf8ea8146.png 300w, https://blog.hippohack.me/_cms/wp-content/uploads/2021/03/852c0dc9c09b58f6d0d2b24cf8ea8146.png 768w, https://blog.hippohack.me/_cms/wp-content/uploads/2021/03/852c0dc9c09b58f6d0d2b24cf8ea8146.png 2000w" sizes="(max-width: 1000px) 100vw, 1000px" /></p>
+<p>テレワーク時は速度が欲しかったので有線で利用していただがその時で、700Mbpsとか。 比べる対象ではないと思うが、Wi-Fiで400Mbps出るとかまぁなんというか、とても気持ちいい。</p>
+<p>月々500円ほどで2台レンタルできて、今まで入ってなかった「長割」に申し込んだのでほぼトントンで利用できる。</p>
+<p>ほんとおすすめ。</p>
+<p>↓ アフィリエイトとかあればいいのにw</p>
+<p>🔗<a href="https://eonet.jp/option/takunailan/meshwifi/">eoメッシュWi-Fiレンタルサービス│サービス内容</a></p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">203</post-id>	</item>
+		<item>
+		<title>「#駆け出しエンジニアと繋がりたい」が、うざい</title>
+		<link>https://blog.hippohack.me/note/193</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Sat, 06 Feb 2021 02:34:52 +0000</pubDate>
+				<guid isPermaLink="false">https://blog.hippohack.me/?post_type=note&#038;p=193</guid>
+
+					<description><![CDATA[このタグつけてツイートしてる人まじ食い物にされるからやめた方がいいと思いますけどね。 食う側も、食われる側もタグついてるのでいい感じにマッチングされちゃった挙句高額な学習教材とか買わされる羽目になるのでは？ もしくは役に [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>このタグつけてツイートしてる人まじ食い物にされるからやめた方がいいと思いますけどね。</p>
+<p>食う側も、食われる側もタグついてるのでいい感じにマッチングされちゃった挙句高額な学習教材とか買わされる羽目になるのでは？</p>
+<p>もしくは役に立たないスクールに入れられたりとか。</p>
+<p>もちろん本人が納得してればなに問題ないとは思うのですが。</p>
+<p>最近スクールで盾の方と接する機会が多くありますが、スクールでたとてこの程度かって型が多数いらしゃる。</p>
+<p>わかっちゃいるけど思っている以上にできないもんで。いや、最悪できなくてもいい。自分で考える力があればいい。</p>
+<p>でもスクールに行ったせいで能動的に学ぶのではなく受動的に学ぶということが標準になってしまっていざスクール出た後に問題に当たった時そこで思考停止する傾向がある気がする。</p>
+<p>判断力、自己解決能力を鍛えるスクールがいいと思う。</p>
+<p>スクールに行ったけどなにも教えてくれなかったってのをよく聞くけど、それはあながち悪くない気がする。</p>
+<p>ガムばれ、駆け出しエンジニア！！</p>
+<hr />
+<p>MENTAでWordPress関連のメンターやってます。雑で辛口で良ければご相談お待ちしています 。</p>
+<p>🔗 <a href="https://menta.work/user/22673">https://menta.work/user/22673</a></p>
+<p>割引クーポン → <a href="https://menta.work/invite/1Gv3wJphUkAchoXO" target="_blank" rel="noopener">🎫 こちら</a></p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">193</post-id>	</item>
+		<item>
+		<title>Twitter APIでエラー「Timestamp out of bounds」</title>
+		<link>https://blog.hippohack.me/web/171</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Fri, 28 Aug 2020 23:32:40 +0000</pubDate>
+				<guid isPermaLink="false">https://blog.hippohack.me/?post_type=web&#038;p=171</guid>
+
+					<description><![CDATA[結論から言うと自分の場合凡ミスだったのでこの記事が他のかたのお役にやつとは思わないのですがログとして。 サーバ時間のずれ？ "errors": Array [ Object { "code": 135, "message [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>結論から言うと自分の場合凡ミスだったのでこの記事が他のかたのお役にやつとは思わないのですがログとして。</p>
+<h2>サーバ時間のずれ？</h2>
+<pre><code>"errors": Array [
+  Object {
+    "code": 135,
+    "message": "Timestamp out of bounds.",
+  },
+],
+</code></pre>
+<p>Twitter APIでPOST時に<strong>「&#8221;Timestamp out of bounds.&#8221;」</strong>なるエラーが帰ってきた。調べてみたところ、<strong>「サーバ時間のずれ？」</strong>そんな記事がちらほら。</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/45709315/twitter-api-timestamp-out-of-bounds-when-calling-oauth-request-token">Twitter API: timestamp out of Bounds when calling oauth request_token &#8211; Stack Overflow</a></li>
+<li><a href="https://b.eax.jp/net/1746/">TwitterAPIのエラーTimestamp out of bounds | あつラボ</a></li>
+<li><a href="https://ameblo.jp/panpukin-pie-pie/entry-11798608225.html">ツイッタークライアントソフトがエラ～　「Timestamp　out　of　bounds」 | ぱんぷきんぱいの「パソコンって楽しいなぁ」</a></li>
+</ul>
+<p>ステータスコードの一覧はここ↓で確認できる。</p>
+<ul>
+<li><a href="https://developer.twitter.com/ja/docs/basics/response-codes">Response Codes | Docs | Twitter Developer</a></li>
+</ul>
+<h2>凡ミスに気づいた</h2>
+<p>飛ばしてた値は、<code>oauth_timestamp=1598616049815</code> これ。以下のサイトを使わせてもらって確認してみた。</p>
+<ul>
+<li><a href="http://www.bad-company.jp/timestamp/">タイムスタンプ⇔時間変換ツール</a></li>
+</ul>
+<p>桁数がおかしい。間違ってた。。</p>
+<p>一日小一時間とはいえ数日費やした。。</p>
+<h2>修正したコード</h2>
+<pre><code>// Bad
+oauth_timestamp: Date.now(),
+// Good
+oauth_timestamp: Math.floor(Date.now() / 1000),
+
+Math.floor(Date.now() / 1000)
+// =&gt; 1598616348
+</code></pre>
+<p>以上で解決。</p>
+<p>といってもこのあとまた別のエラーで引っかかるのですが。それはまた別の記事で書く（予定）。</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">171</post-id>	</item>
+		<item>
+		<title>リュックサックの肩紐にマウントするスマホポーチ</title>
+		<link>https://blog.hippohack.me/note/148</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Fri, 14 Feb 2020 21:00:25 +0000</pubDate>
+				<guid isPermaLink="false">https://blog.hippohack.me/?post_type=note&#038;p=148</guid>
+
+					<description><![CDATA[突然のこだわり発足 最近なぜか、ズボンのポケットにものを入れない生活をはじめました。 以前まで、スマホも財布も鍵もすべてズボンのポケットに入れていたのですが突然に嫌になりました。 おそらくスマホを機種変更した際に機種が大 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h2>突然のこだわり発足</h2>
+<p>最近なぜか、ズボンのポケットにものを入れない生活をはじめました。</p>
+<p>以前まで、スマホも財布も鍵もすべてズボンのポケットに入れていたのですが突然に嫌になりました。</p>
+<p>おそらくスマホを機種変更した際に機種が大きくなったことが原因かと思います。最近のスマホは大型化が進んでてズボンのポケットでは収まらなくなってきている印象です。入るは入るけど存在感がありすぎて嫌というか。入れたまま座れないし。</p>
+<h3>そして面倒に感じるようになった</h3>
+<p>僕は日々リュックサックを使用しています。通勤の際、改札を通るのに<strong>毎回リュックサックをおろして</strong>（おろすといっても体の前に持ち替えているだけなのですが）Pitapaカード（交通系ICカード）を取り出して改札機に「ピッ」しています。</p>
+<p>最近は自宅から駅まで自転車を利用する機会も多くなり、その際にコインパーキングを使用しています。行きは必要ないのですが、帰りには駐車料金を払うため<strong>毎回リュックサックをおろして</strong>財布を取り出して支払いをします。</p>
+<p>以前まではすべてポケットに入っていたのでわざわざリュックサックを下ろす必要もなく改札も通れて、財布も出せました。けど今は毎度毎度リュックサックを下ろす必要があります。これがとてもめんどうに感じるようになりました。</p>
+<h3>解消方法を模索</h3>
+<p>以前になにかの広告で肩紐部分がポケットになっていてそこにスマホを収納することができるリュックサックを見たことがあったのを思い出しました。</p>
+<p>ただもちろん今使っているリュックサックには肩紐部分にポケットなんてありません。</p>
+<p>ではポケットをつけるしかない。</p>
+<h2>リュックサックにポーチをマウントする</h2>
+<p>ポケットをつけるというのはまぁ現実的ではないと考えポーチのようなものをつけるのがよいのではないかと考えました。</p>
+<p>で、きっとおんなじこと考えてる人がいるんじゃないかと思い調べてみるとやっぱりいらして、ブログやYoutube動画などさまざまありました。100均製品で済ませているかたなんかが多かったですね。</p>
+<h3>アマゾンをチェック</h3>
+<p>自分的には100均製品は少しちゃちく見えてしまったのでとりあえずアマゾンで探してみました。</p>
+<p>「 <strong>リュックサックにつけるポーチ</strong> 」で検索しました。たくさんあるわけではなかったですがあるのはある。</p>
+<h3>よさげなのがあったが高い</h3>
+<p>たぶんこれ調べた際にブログで紹介されてたやつだと思う。</p>
+<p>丈夫そうで、大きさもグッド。マジックテープでしっかりリュックの肩紐マウントできる仕様になってる。理想的です。</p>
+<p>ただ高い。3000円オーバーでした。これは手が出せない。</p>
+<ul>
+<li><a href="https://amzn.to/2tJiiOS">[ティンバックツー] モバイルケース スリーウェイ L</a></li>
+</ul>
+<p><iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&#038;bc1=000000&#038;IS2=1&#038;bg1=FFFFFF&#038;fc1=000000&#038;lc1=0000FF&#038;t=benzohcom-22&#038;language=ja_JP&#038;o=9&#038;p=8&#038;l=as4&#038;m=amazon&#038;f=ifr&#038;ref=as_ss_li_til&#038;asins=B01D8Z1AYI&#038;linkId=83093d732f9d40f0e29c98356a605323"></iframe></p>
+<h3>突然現れた激安品</h3>
+<p>とりあえず、ティンバックツーを欲しい物リストに入れて1ヶ月ほど眺めるだけの日々が続きました。タイムセールだったり値段が下がるのを期待していたのかもしれません。</p>
+<p>そんなある日突然アマゾンからのサジェストに現れたガジェットポーチ。</p>
+<ul>
+<li><a href="https://amzn.to/38tbLqZ">エレコム ポーチ アクセサリ/アクセサリ/ガジェット収納 2ポケット リュック取付ベルト付 ブラック BMA-GP09BK</a></li>
+</ul>
+<p><iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&#038;bc1=000000&#038;IS2=1&#038;bg1=FFFFFF&#038;fc1=000000&#038;lc1=0000FF&#038;t=benzohcom-22&#038;language=ja_JP&#038;o=9&#038;p=8&#038;l=as4&#038;m=amazon&#038;f=ifr&#038;ref=as_ss_li_til&#038;asins=B013J9F634&#038;linkId=01295317bbaed8a30e3a1e27dc44dbc3"></iframe></p>
+<p>安い、リュックの肩紐にマウントしてるサムネイル画像もある。</p>
+<p>即ポチでした。</p>
+<h2>さっそくマウントしてみる</h2>
+<p>2日後には届きました。現物を確認したところ小さいことに気づきました。ちょっと失敗です。昔のiPhone5なら入るかなーというサイズです。昨今のデカいスマホはまぁ入りません。安さに飛びついてしまったを反省です。</p>
+<p>ですが、Pitapaカードは余裕で入ります。なので自分がやりたかったことは実現できます。</p>
+<p>ということで気を取り直して、さっそくマウントしてみます。</p>
+<p>肩紐のどの部分につけるかは試行錯誤しつつ位置を決定。</p>
+<p>いい感じです。表のポケット部分にカードを入れて、メインの口の部分にはイヤホンケースや、愛用の<a href="https://amzn.to/39qFEbe">「小さいふ」</a>が余裕で入ります。</p>
+<ul>
+<li><a href="https://amzn.to/39qFEbe">【ミニ財布・小さい財布】小さいふ ペケーニョ クアトロガッツ 栃木レザー ヌメ革 ブラックベリー</a></li>
+</ul>
+<h2>まとめ</h2>
+<p>理想的にはスマホも収納したかったのですが、この価格でやりたいことを叶えることができたのでまぁ満足です。</p>
+<p>おかげで「<strong>毎回リュックサックをおろす</strong>」必要がなくなりました。とても快適です。</p>
+<h3>ポーチを買ったあとにいいリュックサック自体を見つけてしまった😱</h3>
+<p>仕様が理想的すぎる。</p>
+<p>今使ってるリュックサックの仕様がかなり気に入っているのですが、超えてきてます。</p>
+<p>このリュックサック、また欲しい物リストに入れて追っかけますｗ</p>
+<ul>
+<li><a href="https://amzn.to/37hKDtB">MARK RYDEN バックパック 完全防水ビジネスリュック メンズ用 30L大容量 盗難防止ラップトップバッグ17インチパソコン対応 黒</a></li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">148</post-id>	</item>
+		<item>
+		<title>【小ネタ】なぜにhoge? fuga? 今更ですが、気になったのでちょっとだけ調べてみた</title>
+		<link>https://blog.hippohack.me/note/41</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Thu, 14 May 2015 14:13:33 +0000</pubDate>
+				<guid isPermaLink="false">http://blog.hippohack.test/?post_type=note&#038;p=41</guid>
+
+					<description><![CDATA[あー、説明するのに、山田太郎や、山田花子っていうとわかりやすいかもね。 本読んでたら出てきたり、先輩がちょいちょいおっしゃる、hoge（ほげ）、fuga（ふが）。 雰囲気で代名詞的なもんだろーって勝手に解釈して知ったかぶ [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>あー、説明するのに、山田太郎や、山田花子っていうとわかりやすいかもね。</p>
+<p>本読んでたら出てきたり、先輩がちょいちょいおっしゃる、hoge（ほげ）、fuga（ふが）。</p>
+<p>雰囲気で代名詞的なもんだろーって勝手に解釈して知ったかぶりをかましておりましたが、ちょっと思い立って調べてみた。</p>
+<blockquote>
+<p>メタ構文変数（メタこうぶんへんすう、metasyntactic variable）はプログラミング言語の記述で使われる識別子の一種。サンプルプログラムなどで意味のない名前が必要な場合に利用される、「意味のない名前」であることが広く知られた識別子のことである。 って難しい呼び方もしっかりおありになる。 国によって違ったりとか。おもしろい。 日本のみで使用されるメタ構文変数として「hoge（ほげ）」「piyo（ぴよ）」「fuga（ふが）」「hogera（ほげら）」「hogehoge（ほげほげ）」などがある。<br />
+  piyo とか hogera はまだ出くわしてない！出くわしたい！</p>
+</blockquote>
+<p>参考： <a href="https://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%BF%E6%A7%8B%E6%96%87%E5%A4%89%E6%95%B0" target="_blank" rel="noopener noreferrer">https://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%BF%E6%A7%8B%E6%96%87%E5%A4%89%E6%95%B0</a></p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">41</post-id>	</item>
+		<item>
+		<title>愛用のCASIO G-SHOCK G-8100の電池が切れたので自分で電池交換してみたりして</title>
+		<link>https://blog.hippohack.me/note/47</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Thu, 30 Apr 2015 14:18:49 +0000</pubDate>
+				<guid isPermaLink="false">http://blog.hippohack.test/?post_type=note&#038;p=47</guid>
+
+					<description><![CDATA[もう5、6年使っているG-SHOCK G-8100がいよいよ電池が切れたので電池交換をしないといけなくなりました。 電池交換なんてそういえば人生で一回もしたことありませんでした。 調べてみるとG-SHOCKなんかの防水機 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>もう5、6年使っているG-SHOCK G-8100がいよいよ電池が切れたので電池交換をしないといけなくなりました。</p>
+<p>電池交換なんてそういえば人生で一回もしたことありませんでした。</p>
+<p>調べてみるとG-SHOCKなんかの防水機能がついている時計はお店に出すとそこそこな値段かかっちゃうみたいです。</p>
+<p>そーんな高価な時計でもないし電池交換に金かけるのもいやだなーと思い自分で換えて見ることにしました。</p>
+<div class="m-ads_w300">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- スマホ用（ロングとの入れ替え用）2 -->
+        <ins class="adsbygoogle"
+                style="display:inline-block;width:300px;height:250px"
+                data-ad-client="ca-pub-7815961604338808"
+                data-ad-slot="7582629372"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+<h2>注意</h2>
+<p>とりあえず先に書いておきますと、自分で電池交換した場合どうしても防水機能的な能力は落ちてしまうみたいです。</p>
+<p>解体してみて思ったのは防水っていうけど隙間だらけやんってまず思いましたし。 あくまで個人での電池交換は</p>
+<p><em>自己責任</em>だってことですね。</p>
+<h2>まず今回用意したもの</h2>
+<p><img class="aligncenter size-full wp-image-482" src="https://blog.hippohack.me/_cms/wp-content/uploads/2015/04/img07-30-04-2015.jpg" alt="img07-30-04-2015" width="640" height="640" /></p>
+<ul>
+<li>サイズの合う精密ドライバー</li>
+<li><a href="https://amzn.to/2N1xW0N" rel="noopener noreferrer" target="_blank">ボタン型電池 CR2016</a>ってやつかな</li>
+<li>先の細いピンセット 以上。 ドライバーは百均で買ったメガネ用のドライバーが使えました。 ボタン電池はコーナンで1個250円とかでした。（執筆当時） ピンセットがうちになくてこちらも今回購入しましたが、200円とかでコーナンで購入できました。 ちょー<strong>安上がり</strong>っすね。 </li>
+</ul>
+<h2>まずは解体作業</h2>
+<p><img class="aligncenter size-full wp-image-474" src="https://blog.hippohack.me/_cms/wp-content/uploads/2015/04/img02-30-04-2015.jpg" alt="img02-30-04-2015" width="640" height="640" /></p>
+<p>はい、見事に死んでおります。</p>
+<p>だいたい電池の寿命って5年ぐらいみたいです。</p>
+<p><img class="aligncenter size-full wp-image-478" src="https://blog.hippohack.me/_cms/wp-content/uploads/2015/04/img05-30-04-2015.png" alt="img05-30-04-2015" width="640" height="640" /></p>
+<p>自分はめんどうだったので片方だけ外して作業しました。 このバンド部分がネジをとっても簡単にはずれるものではありませんでした。 結構強引にひっぱっちゃいましたが、慎重にやってください。</p>
+<p>ネジはなくさないように。</p>
+<p><a href="https://blog.hippohack.me/_cms/wp-content/uploads/2015/04/img03-30-04-2015.png"><img class="aligncenter size-full wp-image-476" src="https://blog.hippohack.me/_cms/wp-content/uploads/2015/04/img03-30-04-2015.png" alt="img03-30-04-2015" width="640" height="640" /></a></p>
+<p>バンドはずして裏外してみて、すーっごい汚い。 長年の汚れが蓄積されていました。</p>
+<p>綿棒やら爪楊枝やらでお掃除しました。 開けてみるとゴム状のカバーや、電池部分にシールが貼ってあります。</p>
+<p>まずそれらのポジションをしっかり覚えておきながら、外していきます。 次に肝心の電池を取り除くのですが、ここで苦労しました。</p>
+<div class="m-ads_w300">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- スマホ用（ロングとの入れ替え用）2 -->
+        <ins class="adsbygoogle"
+                style="display:inline-block;width:300px;height:250px"
+                data-ad-client="ca-pub-7815961604338808"
+                data-ad-slot="7582629372"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+<h2>電池を交換する</h2>
+<p>電池を丸く覆うように押さえ込まれていてどっちかを引っかけて固定しているようだったのですが、どっちなのかわからず結構強引にガシガシやってしまいました。</p>
+<p>なんかちょっと形変わっちゃったり。 結論、下記画像の通り、向かって右側が引っかけてある方でした。 少し電池を指で押さえ込んであげると固定具が少し浮くのでピンセットで固定部分をいじってあげると簡単にはずすことができました。</p>
+<p><img class="aligncenter size-full wp-image-481" src="https://blog.hippohack.me/_cms/wp-content/uploads/2015/04/img06-30-04-2015.png" alt="img06-30-04-2015" width="640" height="640" /></p>
+<p>あとは折り返し。ここまでの逆をやって行きます。 まずは電池を新しいものに交換します。 電池入れた時点で画面を一度確認。ここでもし画面がなんもついてなーいってことであえば一度リセットさせてあげる必要があるみたいです。 この説明が電池についていたシールに書かれていますのでそのとおりに。</p>
+<p><img class="aligncenter size-full wp-image-479" src="https://blog.hippohack.me/_cms/wp-content/uploads/2015/04/img06-30-04-2015_2.png" alt="img06-30-04-2015_2" width="640" height="640" /></p>
+<p>で、画面を再度チェックすればきっとついてるはずです。 それが確認できればネジやらしめて元に戻します。</p>
+<p><img class="aligncenter size-full wp-image-484" src="https://blog.hippohack.me/_cms/wp-content/uploads/2015/04/img08-30-04-2015.png" alt="img08-30-04-2015" width="640" height="640" /></p>
+<p>時間はもちろん初期化されるので合わせてあげて。 これ結構めんどくさい。</p>
+<p><img class="aligncenter size-full wp-image-485" src="https://blog.hippohack.me/_cms/wp-content/uploads/2015/04/img09-30-04-2015.jpg" alt="img09-30-04-2015" width="640" height="640" /></p>
+<p>はいー。 ばっちり時間も合わせて、バックライトもしっかりつきます。 完了です。 コーナンなんかで電池の交換してくれるみたいですが、自己責任と、防水能力を気にしないのであれば高いお金出さなくてもこの程度なら自宅でできるってことですな。 あとまぁ、防水機能がどの程度落ちてるかはわかりませんので雨、水なんかにはいちお気をつけたいと思います。</p>
+<p>では〜。</p>
+<p><iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&#038;bc1=000000&#038;IS2=1&#038;bg1=FFFFFF&#038;fc1=000000&#038;lc1=0000FF&#038;t=benzohcom-22&#038;language=ja_JP&#038;o=9&#038;p=8&#038;l=as4&#038;m=amazon&#038;f=ifr&#038;ref=as_ss_li_til&#038;asins=B003X5YO6U&#038;linkId=2c29691d28ba6b9c751f6920ee65b6b3"></iframe></p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">47</post-id>	</item>
+	</channel>
+</rss>

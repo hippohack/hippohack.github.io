@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>#swift &#8211; HippoBlog</title>
+	<atom:link href="https://blog.hippohack.me/hashtag/swift/feed" rel="self" type="application/rss+xml" />
+	<link>https://blog.hippohack.me</link>
+	<description>Web開発に関する備忘録や日々の雑記ブログ</description>
+	<lastBuildDate>Sun, 03 Dec 2023 03:46:56 +0000</lastBuildDate>
+	<language>ja</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.7.13</generator>
+
+<image>
+	<url>https://blog.hippohack.me/_cms/wp-content/uploads/2021/03/image.jpg</url>
+	<title>#swift &#8211; HippoBlog</title>
+	<link>https://blog.hippohack.me</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">190967550</site>	<item>
+		<title>Xcode で VSCode のキーバインドを再現したい</title>
+		<link>https://blog.hippohack.me/note/259</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Sun, 03 Dec 2023 03:46:56 +0000</pubDate>
+				<guid isPermaLink="false">https://blog.hippohack.me/?post_type=note&#038;p=259</guid>
+
+					<description><![CDATA[最近 iOSアプリを作りたくて Xcode を触り始めたのですが、キーバインドが辛いです。 辛いというのはこれまでずっと VSCode でコードを書いていましたので差がありすぎてやりたいことが全然できずに困っていました。 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>最近 iOSアプリを作りたくて Xcode を触り始めたのですが、キーバインドが辛いです。<br />
+辛いというのはこれまでずっと VSCode でコードを書いていましたので差がありすぎてやりたいことが全然できずに困っていました。<br />
+そもそも、VSCode で開発する方法もさぐってみたのですが自分が辿り着けていないだけかもしれません結果的にうまくいきませんでした。</p>
+<p>この記事では、Xcode のキーバインドが辛いのでなるべく VSCode に寄せる設定を加えた際にやったことを残します。</p>
+<h2>設定方法</h2>
+<p>基本的にはこちらの <a href="https://gist.github.com/tranquan/b15a4502930e4c8649bc1dab5c1d2173">Gist</a> を参考にさせていただいてますので省略します。</p>
+<h2>躓いたこと</h2>
+<p><code>/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist</code> がロックされていて更新できませんでした。</p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image-895x1024.png" alt="" width="895" height="1024" class="aligncenter size-large wp-image-260" srcset="https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image.png 895w, https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image.png 262w, https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image.png 768w, https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image.png 1342w, https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image.png 1482w" sizes="(max-width: 895px) 100vw, 895px" /></p>
+<p>結果的に、設定アプリの「プライバシーとセキュリティ」の「アプリ管理」からターミナルに権限を付与して、<code>nano</code> で編集して更新ができました。</p>
+<pre><code>sudo nano /Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist
+</code></pre>
+<h2>Key Bindings Set を選択する</h2>
+<p>キャプチャだけですみません。</p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image-2-1024x699.png" alt="" width="1024" height="699" class="aligncenter size-large wp-image-261" srcset="https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image-2.png 1024w, https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image-2.png 300w, https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image-2.png 768w, https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image-2.png 1536w, https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image-2.png 1682w" sizes="(max-width: 1000px) 100vw, 1000px" /></p>
+<h2>Delete Line は、<code>cmd + x</code> にしたい</h2>
+<p>これはひょっとすると自分の認識がずれているだけかもしれないのですが、行削除（厳密にはカット＆コピー）は、<code>ctrl + x</code> ではなく <code>cmd + x</code> にしたいと思っていたので ChatGPT さんにご教授いただいて以下のように変更しました。</p>
+<pre><code>            &lt;key&gt;@x&lt;/key&gt;
+            &lt;string&gt;deleteLine:&lt;/string&gt;
+</code></pre>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image-3-1024x659.png" alt="" width="1024" height="659" class="aligncenter size-large wp-image-262" srcset="https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image-3.png 1024w, https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image-3.png 300w, https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image-3.png 768w, https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image-3.png 1536w, https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image-3.png 2038w" sizes="(max-width: 1000px) 100vw, 1000px" /></p>
+<p>こちらに関しては、変更してはみましたが実際の挙動は思っているものにはなっていないことに後から気づきました。<br />
+本来は前述した通り、カーソルが当たっている行 or 選択状態のものをカット＆コピーして欲しかったのですが、実際は選択状態のものをカットするのみという挙動をしています。<br />
+ここは改善ポイントです。もし良い方法あれば教えて欲しいです🙇‍♂️</p>
+<h2>最終的な <code>VSCode.idekeybindings</code> の XML</h2>
+<p><code>/Users/benzoh/Library/Developer/Xcode/UserData/KeyBindings/VSCode.idekeybindings</code></p>
+<pre><code class="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+    &lt;key&gt;Menu Key Bindings&lt;/key&gt;
+    &lt;dict&gt;
+        &lt;key&gt;Key Bindings&lt;/key&gt;
+        &lt;array&gt;
+            &lt;dict&gt;
+                &lt;key&gt;Action&lt;/key&gt;
+                &lt;string&gt;cut:&lt;/string&gt;
+                &lt;key&gt;Alternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;CommandID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEKit.CmdDefinition.Cut&lt;/string&gt;
+                &lt;key&gt;Group&lt;/key&gt;
+                &lt;string&gt;Edit Menu&lt;/string&gt;
+                &lt;key&gt;GroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEKit.MenuDefinition.Main&lt;/string&gt;
+                &lt;key&gt;GroupedAlternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Keyboard Shortcut&lt;/key&gt;
+                &lt;string&gt;^x&lt;/string&gt;
+                &lt;key&gt;Navigation&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Title&lt;/key&gt;
+                &lt;string&gt;Cut&lt;/string&gt;
+            &lt;/dict&gt;
+            &lt;dict&gt;
+                &lt;key&gt;Action&lt;/key&gt;
+                &lt;string&gt;duplicate:&lt;/string&gt;
+                &lt;key&gt;Alternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;CommandID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEKit.CmdDefinition.Duplicate&lt;/string&gt;
+                &lt;key&gt;Group&lt;/key&gt;
+                &lt;string&gt;Edit Menu&lt;/string&gt;
+                &lt;key&gt;GroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEKit.MenuDefinition.Main&lt;/string&gt;
+                &lt;key&gt;GroupedAlternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Keyboard Shortcut&lt;/key&gt;
+                &lt;string&gt;~$&lt;/string&gt;
+                &lt;key&gt;Navigation&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Title&lt;/key&gt;
+                &lt;string&gt;Duplicate&lt;/string&gt;
+            &lt;/dict&gt;
+            &lt;dict&gt;
+                &lt;key&gt;Action&lt;/key&gt;
+                &lt;string&gt;openQuickly:&lt;/string&gt;
+                &lt;key&gt;Alternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;CommandID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEKit.CmdDefinition.OpenQuickly&lt;/string&gt;
+                &lt;key&gt;Group&lt;/key&gt;
+                &lt;string&gt;File Menu&lt;/string&gt;
+                &lt;key&gt;GroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEKit.MenuDefinition.Main&lt;/string&gt;
+                &lt;key&gt;GroupedAlternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Keyboard Shortcut&lt;/key&gt;
+                &lt;string&gt;@p&lt;/string&gt;
+                &lt;key&gt;Navigation&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Title&lt;/key&gt;
+                &lt;string&gt;Open Quickly…&lt;/string&gt;
+            &lt;/dict&gt;
+            &lt;dict&gt;
+                &lt;key&gt;Action&lt;/key&gt;
+                &lt;string&gt;runPageLayout:&lt;/string&gt;
+                &lt;key&gt;Alternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;CommandID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEKit.CmdDefinition.PageSetup&lt;/string&gt;
+                &lt;key&gt;Group&lt;/key&gt;
+                &lt;string&gt;File Menu&lt;/string&gt;
+                &lt;key&gt;GroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEKit.MenuDefinition.Main&lt;/string&gt;
+                &lt;key&gt;GroupedAlternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Navigation&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Title&lt;/key&gt;
+                &lt;string&gt;Page Setup…&lt;/string&gt;
+            &lt;/dict&gt;
+            &lt;dict&gt;
+                &lt;key&gt;Action&lt;/key&gt;
+                &lt;string&gt;printDocument:&lt;/string&gt;
+                &lt;key&gt;Alternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;CommandID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEKit.CmdDefinition.Print&lt;/string&gt;
+                &lt;key&gt;Group&lt;/key&gt;
+                &lt;string&gt;File Menu&lt;/string&gt;
+                &lt;key&gt;GroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEKit.MenuDefinition.Main&lt;/string&gt;
+                &lt;key&gt;GroupedAlternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Navigation&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Title&lt;/key&gt;
+                &lt;string&gt;Print…&lt;/string&gt;
+            &lt;/dict&gt;
+            &lt;dict&gt;
+                &lt;key&gt;Action&lt;/key&gt;
+                &lt;string&gt;showDocumentItemsMenu:&lt;/string&gt;
+                &lt;key&gt;Alternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;CommandID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEKit.CmdDefinition.ShowDocumentItemsMenu&lt;/string&gt;
+                &lt;key&gt;Group&lt;/key&gt;
+                &lt;string&gt;View Menu&lt;/string&gt;
+                &lt;key&gt;GroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEKit.MenuDefinition.Main&lt;/string&gt;
+                &lt;key&gt;GroupedAlternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Keyboard Shortcut&lt;/key&gt;
+                &lt;string&gt;$@O&lt;/string&gt;
+                &lt;key&gt;Navigation&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Parent Title&lt;/key&gt;
+                &lt;string&gt;Editor&lt;/string&gt;
+                &lt;key&gt;Title&lt;/key&gt;
+                &lt;string&gt;Show Document Items&lt;/string&gt;
+            &lt;/dict&gt;
+            &lt;dict&gt;
+                &lt;key&gt;Action&lt;/key&gt;
+                &lt;string&gt;toggleBreakpointAtCurrentLine:&lt;/string&gt;
+                &lt;key&gt;Alternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;CommandID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEKit.CmdDefinition.ToggleBreakpointAtCurrentLine&lt;/string&gt;
+                &lt;key&gt;Group&lt;/key&gt;
+                &lt;string&gt;Debug Menu&lt;/string&gt;
+                &lt;key&gt;GroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEKit.MenuDefinition.Main&lt;/string&gt;
+                &lt;key&gt;GroupedAlternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Keyboard Shortcut&lt;/key&gt;
+                &lt;string&gt;&lt;/string&gt;
+                &lt;key&gt;Navigation&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Parent Title&lt;/key&gt;
+                &lt;string&gt;Breakpoints&lt;/string&gt;
+                &lt;key&gt;Title&lt;/key&gt;
+                &lt;string&gt;Create Breakpoint at Current Line&lt;/string&gt;
+            &lt;/dict&gt;
+            &lt;dict&gt;
+                &lt;key&gt;Action&lt;/key&gt;
+                &lt;string&gt;moveCurrentLineDown:&lt;/string&gt;
+                &lt;key&gt;Alternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;CommandGroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.CmdDefinition.MoveLineDown&lt;/string&gt;
+                &lt;key&gt;CommandID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.CmdDefinition.MoveLineDown&lt;/string&gt;
+                &lt;key&gt;Group&lt;/key&gt;
+                &lt;string&gt;Editor Menu for Asset Catalog Comparison&lt;/string&gt;
+                &lt;key&gt;GroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.DeltaComparisonEditor.MenuDefinition.Editor&lt;/string&gt;
+                &lt;key&gt;GroupedAlternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Keyboard Shortcut&lt;/key&gt;
+                &lt;string&gt;~&lt;/string&gt;
+                &lt;key&gt;Navigation&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Parent Title&lt;/key&gt;
+                &lt;string&gt;Structure&lt;/string&gt;
+                &lt;key&gt;Title&lt;/key&gt;
+                &lt;string&gt;Move Line Down&lt;/string&gt;
+            &lt;/dict&gt;
+            &lt;dict&gt;
+                &lt;key&gt;Action&lt;/key&gt;
+                &lt;string&gt;moveCurrentLineDown:&lt;/string&gt;
+                &lt;key&gt;Alternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;CommandGroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.CmdDefinition.MoveLineDown&lt;/string&gt;
+                &lt;key&gt;CommandID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.CmdDefinition.MoveLineDown&lt;/string&gt;
+                &lt;key&gt;Group&lt;/key&gt;
+                &lt;string&gt;Editor Menu for Playground&lt;/string&gt;
+                &lt;key&gt;GroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPlaygroundEditor.MenuDefinition.Editor&lt;/string&gt;
+                &lt;key&gt;GroupedAlternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Keyboard Shortcut&lt;/key&gt;
+                &lt;string&gt;~&lt;/string&gt;
+                &lt;key&gt;Navigation&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Parent Title&lt;/key&gt;
+                &lt;string&gt;Structure&lt;/string&gt;
+                &lt;key&gt;Title&lt;/key&gt;
+                &lt;string&gt;Move Line Down&lt;/string&gt;
+            &lt;/dict&gt;
+            &lt;dict&gt;
+                &lt;key&gt;Action&lt;/key&gt;
+                &lt;string&gt;moveCurrentLineDown:&lt;/string&gt;
+                &lt;key&gt;Alternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;CommandGroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.CmdDefinition.MoveLineDown&lt;/string&gt;
+                &lt;key&gt;CommandID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.CmdDefinition.MoveLineDown&lt;/string&gt;
+                &lt;key&gt;Group&lt;/key&gt;
+                &lt;string&gt;Editor Menu for Source Code&lt;/string&gt;
+                &lt;key&gt;GroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.MenuDefinition.Editor&lt;/string&gt;
+                &lt;key&gt;GroupedAlternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Keyboard Shortcut&lt;/key&gt;
+                &lt;string&gt;~&lt;/string&gt;
+                &lt;key&gt;Navigation&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Parent Title&lt;/key&gt;
+                &lt;string&gt;Structure&lt;/string&gt;
+                &lt;key&gt;Title&lt;/key&gt;
+                &lt;string&gt;Move Line Down&lt;/string&gt;
+            &lt;/dict&gt;
+            &lt;dict&gt;
+                &lt;key&gt;Action&lt;/key&gt;
+                &lt;string&gt;moveCurrentLineUp:&lt;/string&gt;
+                &lt;key&gt;Alternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;CommandGroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.CmdDefinition.MoveLineUp&lt;/string&gt;
+                &lt;key&gt;CommandID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.CmdDefinition.MoveLineUp&lt;/string&gt;
+                &lt;key&gt;Group&lt;/key&gt;
+                &lt;string&gt;Editor Menu for Asset Catalog Comparison&lt;/string&gt;
+                &lt;key&gt;GroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.DeltaComparisonEditor.MenuDefinition.Editor&lt;/string&gt;
+                &lt;key&gt;GroupedAlternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Keyboard Shortcut&lt;/key&gt;
+                &lt;string&gt;~&lt;/string&gt;
+                &lt;key&gt;Navigation&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Parent Title&lt;/key&gt;
+                &lt;string&gt;Structure&lt;/string&gt;
+                &lt;key&gt;Title&lt;/key&gt;
+                &lt;string&gt;Move Line Up&lt;/string&gt;
+            &lt;/dict&gt;
+            &lt;dict&gt;
+                &lt;key&gt;Action&lt;/key&gt;
+                &lt;string&gt;moveCurrentLineUp:&lt;/string&gt;
+                &lt;key&gt;Alternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;CommandGroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.CmdDefinition.MoveLineUp&lt;/string&gt;
+                &lt;key&gt;CommandID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.CmdDefinition.MoveLineUp&lt;/string&gt;
+                &lt;key&gt;Group&lt;/key&gt;
+                &lt;string&gt;Editor Menu for Playground&lt;/string&gt;
+                &lt;key&gt;GroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPlaygroundEditor.MenuDefinition.Editor&lt;/string&gt;
+                &lt;key&gt;GroupedAlternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Keyboard Shortcut&lt;/key&gt;
+                &lt;string&gt;~&lt;/string&gt;
+                &lt;key&gt;Navigation&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Parent Title&lt;/key&gt;
+                &lt;string&gt;Structure&lt;/string&gt;
+                &lt;key&gt;Title&lt;/key&gt;
+                &lt;string&gt;Move Line Up&lt;/string&gt;
+            &lt;/dict&gt;
+            &lt;dict&gt;
+                &lt;key&gt;Action&lt;/key&gt;
+                &lt;string&gt;moveCurrentLineUp:&lt;/string&gt;
+                &lt;key&gt;Alternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;CommandGroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.CmdDefinition.MoveLineUp&lt;/string&gt;
+                &lt;key&gt;CommandID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.CmdDefinition.MoveLineUp&lt;/string&gt;
+                &lt;key&gt;Group&lt;/key&gt;
+                &lt;string&gt;Editor Menu for Source Code&lt;/string&gt;
+                &lt;key&gt;GroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.MenuDefinition.Editor&lt;/string&gt;
+                &lt;key&gt;GroupedAlternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Keyboard Shortcut&lt;/key&gt;
+                &lt;string&gt;~&lt;/string&gt;
+                &lt;key&gt;Navigation&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Parent Title&lt;/key&gt;
+                &lt;string&gt;Structure&lt;/string&gt;
+                &lt;key&gt;Title&lt;/key&gt;
+                &lt;string&gt;Move Line Up&lt;/string&gt;
+            &lt;/dict&gt;
+            &lt;dict&gt;
+                &lt;key&gt;Action&lt;/key&gt;
+                &lt;string&gt;renameRefactor:&lt;/string&gt;
+                &lt;key&gt;Alternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;CommandGroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.CmdDefinition.Refactor.Rename&lt;/string&gt;
+                &lt;key&gt;CommandID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.CmdDefinition.Refactor.Rename&lt;/string&gt;
+                &lt;key&gt;Group&lt;/key&gt;
+                &lt;string&gt;Editor Menu for Asset Catalog Comparison&lt;/string&gt;
+                &lt;key&gt;GroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.DeltaComparisonEditor.MenuDefinition.Editor&lt;/string&gt;
+                &lt;key&gt;GroupedAlternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Keyboard Shortcut&lt;/key&gt;
+                &lt;string&gt;&lt;/string&gt;
+                &lt;key&gt;Navigation&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Parent Title&lt;/key&gt;
+                &lt;string&gt;Refactor&lt;/string&gt;
+                &lt;key&gt;Title&lt;/key&gt;
+                &lt;string&gt;Rename…&lt;/string&gt;
+            &lt;/dict&gt;
+            &lt;dict&gt;
+                &lt;key&gt;Action&lt;/key&gt;
+                &lt;string&gt;renameRefactor:&lt;/string&gt;
+                &lt;key&gt;Alternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;CommandGroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.CmdDefinition.Refactor.Rename&lt;/string&gt;
+                &lt;key&gt;CommandID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.CmdDefinition.Refactor.Rename&lt;/string&gt;
+                &lt;key&gt;Group&lt;/key&gt;
+                &lt;string&gt;Editor Menu for Playground&lt;/string&gt;
+                &lt;key&gt;GroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPlaygroundEditor.MenuDefinition.Editor&lt;/string&gt;
+                &lt;key&gt;GroupedAlternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Keyboard Shortcut&lt;/key&gt;
+                &lt;string&gt;&lt;/string&gt;
+                &lt;key&gt;Navigation&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Parent Title&lt;/key&gt;
+                &lt;string&gt;Refactor&lt;/string&gt;
+                &lt;key&gt;Title&lt;/key&gt;
+                &lt;string&gt;Rename…&lt;/string&gt;
+            &lt;/dict&gt;
+            &lt;dict&gt;
+                &lt;key&gt;Action&lt;/key&gt;
+                &lt;string&gt;renameRefactor:&lt;/string&gt;
+                &lt;key&gt;Alternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;CommandGroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.CmdDefinition.Refactor.Rename&lt;/string&gt;
+                &lt;key&gt;CommandID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.CmdDefinition.Refactor.Rename&lt;/string&gt;
+                &lt;key&gt;Group&lt;/key&gt;
+                &lt;string&gt;Editor Menu for Source Code&lt;/string&gt;
+                &lt;key&gt;GroupID&lt;/key&gt;
+                &lt;string&gt;Xcode.IDEPegasusSourceEditor.MenuDefinition.Editor&lt;/string&gt;
+                &lt;key&gt;GroupedAlternate&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Keyboard Shortcut&lt;/key&gt;
+                &lt;string&gt;&lt;/string&gt;
+                &lt;key&gt;Navigation&lt;/key&gt;
+                &lt;string&gt;NO&lt;/string&gt;
+                &lt;key&gt;Parent Title&lt;/key&gt;
+                &lt;string&gt;Refactor&lt;/string&gt;
+                &lt;key&gt;Title&lt;/key&gt;
+                &lt;string&gt;Rename…&lt;/string&gt;
+            &lt;/dict&gt;
+        &lt;/array&gt;
+        &lt;key&gt;Version&lt;/key&gt;
+        &lt;integer&gt;3&lt;/integer&gt;
+    &lt;/dict&gt;
+    &lt;key&gt;Text Key Bindings&lt;/key&gt;
+    &lt;dict&gt;
+        &lt;key&gt;Key Bindings&lt;/key&gt;
+        &lt;dict&gt;
+            &lt;key&gt;&lt;/key&gt;
+            &lt;array&gt;
+                &lt;string&gt;moveParagraphBackwardAndModifySelection:&lt;/string&gt;
+                &lt;string&gt;moveParagraphForwardAndModifySelection:&lt;/string&gt;
+                &lt;array&gt;
+                    &lt;string&gt;moveBackward:&lt;/string&gt;
+                    &lt;string&gt;moveToBeginningOfParagraph:&lt;/string&gt;
+                &lt;/array&gt;
+                &lt;array&gt;
+                    &lt;string&gt;moveForward:&lt;/string&gt;
+                    &lt;string&gt;moveToEndOfParagraph:&lt;/string&gt;
+                &lt;/array&gt;
+                &lt;string&gt;selectToMark:&lt;/string&gt;
+                &lt;string&gt;swapWithMark:&lt;/string&gt;
+                &lt;string&gt;scrollToBeginningOfDocument:&lt;/string&gt;
+                &lt;string&gt;scrollToEndOfDocument:&lt;/string&gt;
+            &lt;/array&gt;
+            &lt;key&gt;@x&lt;/key&gt;
+            &lt;string&gt;deleteLine:&lt;/string&gt;
+            &lt;key&gt;&lt;/key&gt;
+            &lt;string&gt;deleteForward:&lt;/string&gt;
+        &lt;/dict&gt;
+        &lt;key&gt;Version&lt;/key&gt;
+        &lt;integer&gt;3&lt;/integer&gt;
+    &lt;/dict&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</code></pre>
+<h2>追加で <code>cmd + d</code></h2>
+<p><a href="https://gist.github.com/tranquan/b15a4502930e4c8649bc1dab5c1d2173?permalink_comment_id=4766166#gistcomment-4766166">この方のおっしゃること</a>にも完全に同意しましたので。同一テキストの複数選択を可能にする <code>cmd + d</code> を追加しました。<br />
+こちらは画面上から設定しました。</p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image-4-1024x633.png" alt="" width="1024" height="633" class="aligncenter size-large wp-image-263" srcset="https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image-4.png 1024w, https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image-4.png 300w, https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image-4.png 768w, https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image-4.png 1536w, https://blog.hippohack.me/_cms/wp-content/uploads/2023/12/image-4.png 2048w" sizes="(max-width: 1000px) 100vw, 1000px" /></p>
+<h2>参考リンク</h2>
+<ul>
+<li><a href="https://gist.github.com/tranquan/b15a4502930e4c8649bc1dab5c1d2173">Xcode KeyBindings as VSCode</a></li>
+<li><a href="https://qiita.com/Shota-Abe/items/a91ab3b5e85a62b755b5?utm_source=pocket_saves">VScodeでiOSアプリを開発する方法 #Swift &#8211; Qiita</a></li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">259</post-id>	</item>
+	</channel>
+</rss>

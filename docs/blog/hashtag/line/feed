@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>#LINE &#8211; HippoBlog</title>
+	<atom:link href="https://blog.hippohack.me/hashtag/line/feed" rel="self" type="application/rss+xml" />
+	<link>https://blog.hippohack.me</link>
+	<description>Web開発に関する備忘録や日々の雑記ブログ</description>
+	<lastBuildDate>Sun, 07 Jul 2019 03:20:48 +0000</lastBuildDate>
+	<language>ja</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.7.13</generator>
+
+<image>
+	<url>https://blog.hippohack.me/_cms/wp-content/uploads/2021/03/image.jpg</url>
+	<title>#LINE &#8211; HippoBlog</title>
+	<link>https://blog.hippohack.me</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">190967550</site>	<item>
+		<title>LINEアカウントが乗っ取られる!?不正なログイン試行と突然の海外からの電話</title>
+		<link>https://blog.hippohack.me/note/34</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Wed, 15 Jun 2016 14:06:19 +0000</pubDate>
+				<guid isPermaLink="false">http://blog.hippohack.test/?post_type=note&#038;p=34</guid>
+
+					<description><![CDATA[おはようございます。梅雨にそっくりのジメジメした性格の持ち主(@hippohack)です。 どうも。 最近あった出来事です。 私のLINEアカウントが乗っ取られるんではないかという事態がありました。 怖かったので経緯を残 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>おはようございます。梅雨にそっくりのジメジメした性格の持ち主(<a href="https://twitter.com/hippohack">@hippohack</a>)です。</p>
+<p>どうも。 最近あった出来事です。 私の<strong>LINEアカウントが乗っ取られる</strong>んではないかという事態がありました。</p>
+<p>怖かったので経緯を残しておこうと思います。</p>
+<div class="m-ads_w300">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- スマホ用（ロングとの入れ替え用）2 -->
+        <ins class="adsbygoogle"
+                style="display:inline-block;width:300px;height:250px"
+                data-ad-client="ca-pub-7815961604338808"
+                data-ad-slot="7582629372"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+<h2>突然こんなメッセージがLINEから来ました</h2>
+<blockquote>
+<p>【重要】 他の端末のLINEから、あなたの電話番号による認証が要求されました。 友人や知人になりすまして、4桁のSMS認証番号を聞き出す詐欺行為の可能性があります。 どんなに親しい人でも、あなたが受け取ったSMS認証番号を教えないようにしてください。 ※お客さま自身がLINEでの認証を行った場合は問題ありません。</p>
+</blockquote>
+<p>SMSには、認証番号が送られてくる。</p>
+<p>びつくり。何事？俺何もしてません。 そしてすかさず、 <strong>ワシントン コロンビア特別区 アメリカ合衆国</strong>からの着信。</p>
+<p>怖い怖い怖い。</p>
+<p>これ出たら脅されて認証番号聞き出そうとするやつじゃないか!? 出ませんでしたよ、もちろん。</p>
+<p>これ自分自身で認証しようとしてないってことは誰かが自分の番号で登録しようとしてるってことですからね。 アカウントを乗っとろうとしているわけですよ。</p>
+<p>なんかよくニュースとかでアカウント乗っ取られたとか<strong>ゲスの極み</strong>とかありますが、自分にも火の粉が降ってきました。</p>
+<p>やっぱり何が起きるか判らないものです。自分は大丈夫なんて思っていられなくなりました。 実際のところ認証番号自体が外に漏れることがなければ、アカウントは安全なはずです。</p>
+<p>自分が覚えてるのも、端末に残っているのも嫌だったのでそのSMSはすぐに消してやりました。</p>
+<p>これでもよくよく考えたら4桁の番号なんて適当に打ってりゃ当たりそうなもんですよね。怖いな。</p>
+<h2>いろいろ調べた結果</h2>
+<p>今回のワシントンからの着信はLINEの認証用番号を電話で通知するためのもののようです。</p>
+<p>よくあるSMS通知を使うか電話通知かみたいな。 ということで<strong>脅し</strong>の電話ではなかったようです。一安心。</p>
+<p>とりあえず怖かったので他の端末からのログイン許可をOFFにしておきました。</p>
+<p>こうしておけば、PC版やiPad版などからのログインは防ぐことができます。 今のところ自分のアカウントも動いているので乗っ取られてはないようです。</p>
+<p>はたして今回の件は本当にアカウントを乗っ取ろうとされた出来事なのか単純に誰かが番号を間違えて認証をしようとしたのか。</p>
+<p>実際のところはわかりませんが、皆様の気をつけていただければと思います。 ITは便利ですが、怖いもんですね。</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">34</post-id>	</item>
+		<item>
+		<title>LINEクリエイターズスタンプが承認されましたのでリリースいたしました！</title>
+		<link>https://blog.hippohack.me/note/48</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Fri, 24 Apr 2015 14:19:22 +0000</pubDate>
+				<guid isPermaLink="false">http://blog.hippohack.test/?post_type=note&#038;p=48</guid>
+
+					<description><![CDATA[だいぶ記憶から薄れておりましたが今年の正月に作成しておりました、LINEスタンプがようやく審査を通過しましたのでこれまでの経過や承認までどれぐらいかかったかなんぞまとめてみたいと思います。 LINEスタンプにはガイドライ [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>だいぶ記憶から薄れておりましたが今年の正月に作成しておりました、LINEスタンプがようやく審査を通過しましたのでこれまでの経過や承認までどれぐらいかかったかなんぞまとめてみたいと思います。</p>
+<p>LINEスタンプにはガイドラインがありますので、それに乗っ取って作成します。</p>
+<p>作成が完了しましたらLINEクリエーターズスタンプのページよりアカウント登録を済ませ、作ったスタンプをアップロード。審査リクエストを出します。</p>
+<p>事前に審査には時間がかかるというのは存じておりましたが、中には2週間とかで承認されたり、長い人は半年とかかかったりもするようです。</p>
+<p>■参考 →　<a href="http://matome.naver.jp/odai/2141092047572409301" target="_blank" rel="noopener noreferrer">LINEクリエイターズスタンプの審査状況まとめ(審査待ち・審査中・リジェクト・承認・販売中) | NAVERまとめ</a></p>
+<h3>審査リクエストから承認までの経過</h3>
+<p>では、実際の自分の承認までの流れはというと、</p>
+<ul>
+<li><strong>①審査リクエストに出したのが1月11日</strong>
+<ul>
+<li>正月休み中に仕上げるつもりだったのにダラダラしちゃって持ち越してしまったのを覚えています。 </li>
+</ul>
+</li>
+<li><strong>②1月20日　リジェクトされた!！</strong>
+<ul>
+<li>拒否られました！ 理由はというとこんな感じ。当時のメールを載っけてみます。 </li>
+<li><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2015/04/img01-23-04-2015.jpg" alt="img01-23-04-2015" width="640" height="421" class="aligncenter size-full wp-image-468" /> </li>
+<li>同じ構図だから面白いとおもったんすけどね〜。さぼったと言われれば否定はしませんが。。 </li>
+</ul>
+</li>
+<li><strong>③1月25日 再審査リクエスト！</strong>
+<ul>
+<li>違う構図のスタンプをかきたしまして、かぶっていたものと入れ替え再審査に出しました。 </li>
+</ul>
+</li>
+<li><strong>④4月22日 承認＆リリース</strong>
+<ul>
+<li>ついに承認されました！ 正直ほぼ忘れていた存在でしたが、本当に忘れたころに承認されました。 約３ヶ月ですかね、 </li>
+<li>リクエストからリリースまでかかりました。 今年の2月から還元率が変わっておりました。</li>
+<li>そのかわり2月以降に審査に出した人は審査されるのが早いと聞いておりましたが、還元率が変わる前に出していた自分でも３ヶ月でリリースまで漕ぎ着ければ早い方なんじゃないでしょうか。 </li>
+</ul>
+</li>
+</ul>
+<p>自分が審査に出したころには、クリエーターズスタンプの登録数は40000とかでしたが、今や90000を超えております。</p>
+<p>やっぱ2月以降すげー増えてるってことですね。 正直多すぎて厳しいな〜。</p>
+<p>では〜。</p>
+<p><br clear="all" /></p>
+<p>宣伝です。 絶賛販売中です。よろしくお願いいたします！！</p>
+<p><a href="https://store.line.me/stickershop/product/1097784/ja" target="_blank" rel="noopener noreferrer"><br />
+  <img src="https://blog.hippohack.me/_cms/wp-content/uploads/2015/04/img01-22-04-2015.png" alt="img01-22-04-2015" width="623" height="291" class="aligncenter size-full wp-image-467" /><br />
+</a></p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">48</post-id>	</item>
+	</channel>
+</rss>

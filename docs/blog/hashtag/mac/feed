@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>#Mac &#8211; HippoBlog</title>
+	<atom:link href="https://blog.hippohack.me/hashtag/mac/feed" rel="self" type="application/rss+xml" />
+	<link>https://blog.hippohack.me</link>
+	<description>Web開発に関する備忘録や日々の雑記ブログ</description>
+	<lastBuildDate>Sun, 16 Feb 2020 13:38:52 +0000</lastBuildDate>
+	<language>ja</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.7.13</generator>
+
+<image>
+	<url>https://blog.hippohack.me/_cms/wp-content/uploads/2021/03/image.jpg</url>
+	<title>#Mac &#8211; HippoBlog</title>
+	<link>https://blog.hippohack.me</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">190967550</site>	<item>
+		<title>macOSのhostsファイルはどこ？</title>
+		<link>https://blog.hippohack.me/web/154</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Mon, 17 Feb 2020 21:34:36 +0000</pubDate>
+				<guid isPermaLink="false">https://blog.hippohack.me/?post_type=web&#038;p=154</guid>
+
+					<description><![CDATA[毎回調べるので、備忘録として。 🚀どこ？ /private/etc/hosts ⚙️ついでにスニペット パスワード聞かれる。 [VSCode] code /private/etc/hosts [Vim] sudo vim [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>毎回調べるので、備忘録として。</p>
+<h2>🚀どこ？</h2>
+<pre><code>/private/etc/hosts
+</code></pre>
+<h2>⚙️ついでにスニペット</h2>
+<p>パスワード聞かれる。</p>
+<p><em class="file-name">[VSCode]</em></p>
+<pre><code>code /private/etc/hosts
+</code></pre>
+<p><em class="file-name">[Vim]</em></p>
+<pre><code>sudo vim /private/etc/hosts
+</code></pre>
+<p><em class="file-name">[Nano]</em></p>
+<pre><code>sudo nano /private/etc/hosts
+</code></pre>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">154</post-id>	</item>
+		<item>
+		<title>macOS MojaveでAdobe CS6を利用するためJava6ランタイムを偽装する</title>
+		<link>https://blog.hippohack.me/note/150</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Sun, 16 Feb 2020 21:33:28 +0000</pubDate>
+				<guid isPermaLink="false">https://blog.hippohack.me/?post_type=note&#038;p=150</guid>
+
+					<description><![CDATA[まず、タイトルの「偽装する」は厳密には違いますので悪しからずです。 実際は、Sierraのころにやってたことを最近またAdobeが必要になったのでCS6を入れる羽目に。で、案の定「以前のJava SE ６ランタイムをイン [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>まず、タイトルの「偽装する」は厳密には違いますので悪しからずです。</p>
+<p>実際は、Sierraのころにやってたことを最近またAdobeが必要になったのでCS6を入れる羽目に。で、案の定「以前のJava SE ６ランタイムをインストールする必要があります」とのこと。</p>
+<p><a href="https://doratex.hatenablog.jp/entry/20160921/1474401468">TeX Alchemist Onlineさんの記事</a>をブックマークしてたのを思い出したので再びお世話になることに。</p>
+<p>たぶんOS上げたときに前に作っていた空フォルダは消されたんだろうと思います。</p>
+<h2>🆘エラー</h2>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2020/02/76267EF9-F074-45A1-9DEA-5B47D9DAAF68.png" alt="CS6アプリ起動時のエラー表示" /></p>
+<h2>⚙️空ディレクトリを作成する</h2>
+<p>どうもフォルダの存在チェックが走るだけらしいので適切にフォルダを作ってやれば動く。ということらしいです。</p>
+<p>必要なフォルダは以下の２つ。</p>
+<pre><code>/System/Library/Java/JavaVirtualMachines/1.6.0.jdk
+/System/Library/Java/Support/Deploy.bundle
+</code></pre>
+<p>パスで書いてますが自分はFinder上からGUI操作でフォルダを作成しました。</p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2020/02/0C39D503-237A-4151-B550-52F4F4F6C385.png" alt="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk" /></p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2020/02/D5E65A0D-49CC-4DCB-B8D8-213B9537930C.png" alt="/System/Library/Java/Support/Deploy.bundle" /></p>
+<p>これでIllustratorもPhotoshopも使うことができます。</p>
+<p>CCを使えばいいのですが、高いですもんねー。</p>
+<h2>🔍参考サイト</h2>
+<ul>
+<li><a href="https://doratex.hatenablog.jp/entry/20160921/1474401468">macOS Sierra (10.12) で Photoshop CS6 / Illustrator CS6 を使う &#8211; TeX Alchemist Online</a></li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">150</post-id>	</item>
+		<item>
+		<title>Macアプリ｢iMovie｣でタイトルに自動的に入る位置情報を消す方法</title>
+		<link>https://blog.hippohack.me/note/32</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Wed, 20 Jul 2016 14:04:34 +0000</pubDate>
+				<guid isPermaLink="false">http://blog.hippohack.test/?post_type=note&#038;p=32</guid>
+
+					<description><![CDATA[こんにちわ。暴飲暴食により顔がパンパンの@hippohackです。 友人の頼まれ仕事をやっておりましたさなか、Macアプリ｢iMovie｣で動画を編集しておりましたら、タイトルに自動的に位置情報が挿入される問題に遭遇し、 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>こんにちわ。暴飲暴食により顔がパンパンの<a href="https://twitter.com/hippohack">@hippohack</a>です。</p>
+<p>友人の頼まれ仕事をやっておりましたさなか、Macアプリ｢iMovie｣で動画を編集しておりましたら、タイトルに自動的に位置情報が挿入される問題に遭遇し、以前は消すことができたのに今回は消し方を忘れてしまっていたので記事にしました。 <div class="m-ads_w300">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- スマホ用（ロングとの入れ替え用）2 -->
+        <ins class="adsbygoogle"
+                style="display:inline-block;width:300px;height:250px"
+                data-ad-client="ca-pub-7815961604338808"
+                data-ad-slot="7582629372"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    </p>
+<h2>位置情報が勝手に挿入される</h2>
+<p><img src="https://c1.staticflickr.com/9/8668/28252806902_a94d8e5b66_o.png" alt="001" /></p>
+<p>ここ、ここ。これです。</p>
+<p>勝手に入れてきよるわけです。なんかすっげーおしゃれな旅行先のムービーとかなら入ってていいとは思うのですが、業務用のムービーに入ってるとどうも変ですよね。</p>
+<p>というわけで、位置情報を消したい。</p>
+<h2>位置情報の表示を消す</h2>
+<p><img src="https://c1.staticflickr.com/9/8760/27740692923_c3e640c007_o.png" alt="002" /></p>
+<p>まずは、対象のタイトル部分を選択します。</p>
+<p>ここで<strong>注意</strong>。選択と行ってもクリックじゃだめです。<strong>ダブルクリック</strong>します。</p>
+<p>自分はずっとクリックしてたので、｢あれー前はここからできたのになぁ｣って、20分ぐらい繰り返してました。</p>
+<p><img src="https://c2.staticflickr.com/8/7766/27740693573_8f15f06089_o.png" alt="003" /></p>
+<p>続いて、<strong>地球マーク</strong>をクリック。</p>
+<p><img src="https://c2.staticflickr.com/8/7549/27740692813_036bbb53d8_o.png" alt="004" /></p>
+<p>すると、リストが開くと思うので、<strong>｢なし｣</strong>を選択。</p>
+<p>結果！</p>
+<p><img src="https://c1.staticflickr.com/9/8567/28252806442_c9c70d2673_o.png" alt="005" /></p>
+<p>チャラーン！消えました。</p>
+<p>半年に一回触るとの頻度だとどうも忘れてしまいますね。</p>
+<p>以上です。</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">32</post-id>	</item>
+		<item>
+		<title>MacアプリiMovieで作成したムービーをToastDVDでディスクに書き出すと映像と音がずれる問題</title>
+		<link>https://blog.hippohack.me/note/31</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Wed, 20 Jul 2016 14:04:00 +0000</pubDate>
+				<guid isPermaLink="false">http://blog.hippohack.test/?post_type=note&#038;p=31</guid>
+
+					<description><![CDATA[夏真っ盛りですね。@hippohackです。 先日のiMovieの記事の続きになるのですが今度はDVDに書き出した際に音楽と映像がずれる問題が発生しました。 なんなら映像は途中で終わっている始末。成功するまでに多くのDV [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>夏真っ盛りですね。<a href="https://twitter.com/hippohack">@hippohack</a>です。</p>
+<p>先日の<a href="https://blog.hippohack.me/note/32">iMovieの記事</a>の続きになるのですが今度はDVDに書き出した際に<strong>音楽と映像がずれる</strong>問題が発生しました。</p>
+<p>なんなら映像は途中で終わっている始末。成功するまでに多くのDVD-Rを無駄にしましたのでまとめておきます。</p>
+<div class="m-ads_w300">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- スマホ用（ロングとの入れ替え用）2 -->
+        <ins class="adsbygoogle"
+                style="display:inline-block;width:300px;height:250px"
+                data-ad-client="ca-pub-7815961604338808"
+                data-ad-slot="7582629372"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+<h2>使用した環境</h2>
+<ul>
+<li>PCは、Macbook pro 15</li>
+<li>OSは、Mac OSX El Capitan &#8211; </li>
+<li>映像作成ソフト、Mac標準 iMovie &#8211; </li>
+<li>書き出しソフト、Mac AppStore購入のToast DVD &#8211; </li>
+<li>DVDドライバは、<a href="https://www.amazon.co.jp/gp/product/B0012SCZ1G/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=B0012SCZ1G&amp;linkCode=as2&amp;tag=benzohcom-22">BUFFALO USB2.0用外付けポータブルDVDドライブ DVSM-P58U2/B</a>
+<ul>
+<li><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=benzohcom-22&#038;l=as2&#038;o=9&#038;a=B0012SCZ1G" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> </li>
+</ul>
+</li>
+<li>ディスクは、DVD-R(映像用) </li>
+</ul>
+<h2>焼き終わったのを確認すると、映像だけ途中までしか入ってない</h2>
+<p>まず今回起こった状態をまとめると、iMovieで作成したデータ(MP4)は問題なく映像も音楽も最後まで完結していて自分の意図したとおりの状態。</p>
+<p>そこからDVDに書き出した際に、<strong>映像と音声にズレ</strong>が生じる。</p>
+<p>音声は問題なく、時間通り最後まで完結しているが、映像は半分にも満たないところで終わってしまっておる。映像の動作が遅い状態で進行して途中で切れてしまっているような状態。</p>
+<h2>失敗した手順</h2>
+<p>自分がやった失敗した手順は次の通り。</p>
+<ul>
+<li>映像ファイルを<strong>ドラッグ&amp;ドロップ</strong>してToastに取り込み </li>
+<li>書き出しの設定などは特にいじらず。 &#8211; </li>
+<li>変えたのはタイトルぐらい。 </li>
+</ul>
+<p>この状態で書き出しスタート。 完了するとToastが通知してくる。</p>
+<p>結果、DVDを再生してみると<strong>映像だけ途中までしか入ってない</strong>。</p>
+<h2>成功した手順</h2>
+<p>自分がやった成功した手順は次のとおり。</p>
+<ul>
+<li>映像ファイルをToastのUI上のメディアから選択。 &#8211; </li>
+<li>書き出しの設定などは特にいじらず。 &#8211; </li>
+<li>変えたのはタイトルぐらい。 </li>
+</ul>
+<p>変えたのは<strong>ドラッグ&amp;ドロップ</strong>せずに<strong>メディアから選択</strong>しただけ。</p>
+<p>この状態で書き出しスタート。 <img src="https://c1.staticflickr.com/9/8838/28324106822_4abdffbdbc_o.png" alt="Toast_DVD" /></p>
+<p>最後は<strong>｢リードアウトを書き込んでいます｣</strong>100％の状態でずっとそのまま。</p>
+<p>30分ぐらいまったが、変わらないのでこれはおかしいと思い、Appleマークから強制終了。 するとDVDプレ−ヤーが起動して勝手に再生しはじめた。</p>
+<p>｢お、行けてるっぽいな｣と実感。 プレイヤーを変えて確認。成功してる。 正直原因はわかりません。</p>
+<p>手順を変えただけです。 成功しているとわかる挙動も一切無かったです。</p>
+<p>なんならフリーズ状態みたいな感じで、失敗すら予感させます。 結果、成功はしましたが、あくまでただの成功例としても記事になります。</p>
+<p>この手順でやれば成功しますとは言い切れません。</p>
+<p>参考までにどうぞよろしくお願いします。</p>
+<h2>参考サイト</h2>
+<ul>
+<li><a href="http://roxio.bbssonline.jp/jpn/offers/emc/roxio_content/toast11_bd_03/">Roxio &#8211; CD Burning &amp; DVD Burning Software &#8211; Creator Software</a> </li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">31</post-id>	</item>
+		<item>
+		<title>MacソフトiDVDでDVD作成＆エンコーディング中にエラーになってしまう問題</title>
+		<link>https://blog.hippohack.me/note/51</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Mon, 02 Mar 2015 14:21:19 +0000</pubDate>
+				<guid isPermaLink="false">http://blog.hippohack.test/?post_type=note&#038;p=51</guid>
+
+					<description><![CDATA[友人に頼まれましてムービーやスライドをつかったイベント用のDVDをつくることになりました。 特に映像編集用のソフトももってないしわざわざ用意するのもなんなのでMacに入っております、「iMovie」「iDVD」を使って編 [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>友人に頼まれましてムービーやスライドをつかったイベント用のDVDをつくることになりました。</p>
+<p>特に映像編集用のソフトももってないしわざわざ用意するのもなんなのでMacに入っております、「iMovie」「iDVD」を使って編集することに。 そんな時発生した「エンコーディングエラー」解決のためのくだりをまとめてみます。</p>
+<h2>とりあえずDVDに入れる映像作成までをサクサクッと</h2>
+<p>まずは、映像編集をiMovieを使って。 映像編集をするのは今回で３回目。</p>
+<p>毎回間が開きすぎて使い方を忘れてしまうんですよね。 ただまぁ、編集といってもそんなに複雑なことをするわけではありませんので、ほぼiMovieのテンプレートまかせ。</p>
+<p>便利ねー。素材を突っ込んだだけでそれなりのもんができてしまうんやからねー。こわいねー。</p>
+<p>はい、ムービーは完成。</p>
+<h2>本題、iDVDでディスクに書き出します</h2>
+<p>ここからが本題です。</p>
+<p>さきほど作成しましたムービー(mp4)をひとつのDVDとして書き出しディスク化します。</p>
+<p>ここから流れ的には普通にDVD作成の手順をふんでいくのですが、その途中段階のエンコーディング作業中にエラーが発生し作業がリセットされてしまいます。</p>
+<p>それを解決するために今回、奮闘します。 まず流れとして、iDVDを立ち上げ新規プロジェクト まずトップメニューのテーマ選択です。 いろいろあります。</p>
+<p>なんかダウンロードしてテーマふやせるっぽいんですけど、アップデート確認してもなんも反応しないのでよくわかりません。</p>
+<p>ほんでテーマ選択しまして、まずはムービーファイルを放り込みます。</p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2015/03/002.jpg" alt="002" width="640" height="377" class="alignnone size-full wp-image-378" /></p>
+<p>ここのトップのところ（一つ目のコマ）にファイルをドラッグ＆ドロップ ここに入れたファイルはDVD挿入と同時に再生を開始する映像になるようです。</p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2015/03/003.jpg" alt="003" width="640" height="377" class="alignnone size-full wp-image-379" /></p>
+<p>で、ここに細切れにした映像をいれておけばチャプターわけされた状態になるようですね。</p>
+<p>市販のDVDっぽい仕様になるわけです。 あとはテキストを入れ替えたりして整えます。 ボタンの位置調節もクリックして移動で、直感的に操作が可能です。 形が完成しましたらいよいよ書き出しです。 僕はあくまで通常のステップを踏んでいるつもりで書き出し作業を行いました。 レンダリングが開始されます。 エンコーディングが開始されます。 この作業、Macのスペックがしょぼいせいかめちゃめちゃ時間がかかります。 大げさじゃなく２時間とかかかりやがる。 待ちました。 待つしかありませんでした。 と、いよいよレンダリングが完了するという一歩手前でアラート。 エンコーディング中にエラーが発生しました。 と出て作業はキャンセルされます。あっさり。 映画１本分待って勝手にキャンセルされる。ありえない。 と言いつつこれを３回つづけました。 あまりに簡単な工程で書き出し作業がはじまるので手順は間違ってないはずと思い込んでいました。 なんならMacのスペックのせいにしてアップルストアのサイトを思わず開いてみたり。 んなわけない。 DVD作るの３回目やし過去２回問題なく書き出しに成功してたのになんでやとイライラしながらHow toの記事を物色しておりましたら有力な情報に出会いました。 どうやら書き出し作業を開始する前に素材のエンコーディングを別で完了しておく必要があるご様子。</p>
+<p>メニューバーから→プロジェクト→プロジェクト情報→</p>
+<p><img src="https://blog.hippohack.me/_cms/wp-content/uploads/2015/03/001.jpg" alt="001" width="640" height="605" class="alignnone size-full wp-image-380" /></p>
+<p>こんな画面が出てくると思います。 下部の素材とエンコーディングの部分。ここが全て完了になってから書き出しを開始すると問題なくDVDの作成に成功しました。</p>
+<h2>まとめると</h2>
+<p>いい感じにトップメニューのテーマの配置が完了したからといってすぐに書き出しを開始してしまいますとエラーになってしまうよう。</p>
+<p>しっかり素材のエンコーディングが終わったのを確認してから書き出しをスタートしてください。 何時間も待った末にエラーで強制キャンセルはさすがに堪えます。 検索してみると同じ現象で苦しんでいる方も多いよう。 最近では映像を使ったエンターテイメントやコンテンツも増えていますのでしっかりと映像の扱える環境を整えておくべきだなの感じた次第です。 ユーチューバーさんとかね。 とりあえず問題解決してすっきりしました。</p>
+<p>でわ〜。。</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">51</post-id>	</item>
+	</channel>
+</rss>

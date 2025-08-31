@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>#CDN &#8211; HippoBlog</title>
+	<atom:link href="https://blog.hippohack.me/hashtag/cdn/feed" rel="self" type="application/rss+xml" />
+	<link>https://blog.hippohack.me</link>
+	<description>Web開発に関する備忘録や日々の雑記ブログ</description>
+	<lastBuildDate>Sun, 07 Jul 2019 03:18:49 +0000</lastBuildDate>
+	<language>ja</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.7.13</generator>
+
+<image>
+	<url>https://blog.hippohack.me/_cms/wp-content/uploads/2021/03/image.jpg</url>
+	<title>#CDN &#8211; HippoBlog</title>
+	<link>https://blog.hippohack.me</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">190967550</site>	<item>
+		<title>Webサイトの読み込み速度を改善したい！FlickrをCDNとして使ってみる</title>
+		<link>https://blog.hippohack.me/web/33</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Sat, 16 Jul 2016 14:05:26 +0000</pubDate>
+				<guid isPermaLink="false">http://blog.hippohack.test/?post_type=web&#038;p=33</guid>
+
+					<description><![CDATA[こんにちわ。週末暇を持てあましたあげく久しぶりに記事を書いております。@hippohackです。 サイトの読み込みが遅くて困っています。自分で自分のサイトを見る気がしない。自業自得ですが。てことで、FlickrやCDNを [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>こんにちわ。週末暇を持てあましたあげく久しぶりに記事を書いております。<a href="https://twitter.com/hippohack">@hippohack</a>です。</p>
+<p>サイトの読み込みが遅くて困っています。自分で自分のサイトを見る気がしない。自業自得ですが。てことで、FlickrやCDNを使ったパフォーマンス系のお話です。</p>
+<div class="m-ads_w300">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- スマホ用（ロングとの入れ替え用）2 -->
+        <ins class="adsbygoogle"
+                style="display:inline-block;width:300px;height:250px"
+                data-ad-client="ca-pub-7815961604338808"
+                data-ad-slot="7582629372"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+<h2>CDNとは</h2>
+<blockquote>
+<p>CDNとは・・・コンテンツ・デリバリー・ネットワーク（Contents Delivery Network）の略で、ウェブコンテンツを配信するのに最適化されたネットワークのことを意味します。 そのサーバーが、代わりに配信することで、負荷が分散され、Webサイトの表示速度の向上にもなる仕組みになります。</p>
+</blockquote>
+<p>今回の意図としてサイトの読み込み速度がめちゃめちゃ遅いのでそいつをなんとかする方法をいろいろ検討しているなかで、CDNに行き当たりました。</p>
+<p>よく出てくる<em>無料CDNサービス：「Cloud Flare（クラウド・フレア）」</em>なんかもありますが、SSL接続は有料じゃないと駄目みたいなので今回は却下。</p>
+<p>てことで、<strong>Flickr</strong>です。 そうFlickrなら<strong>SSL</strong>対応可能です。</p>
+<p>画像だけでいいやって思えるならFlickrめっちゃ便利かもです。</p>
+<h2>まずはflickrに素材をアップロード</h2>
+<p>サインアップまでは<strong>flickr</strong>の手順でやってください。 あとは<strong>CDN</strong>として使う際に決まり事として。 <em>共有範囲</em>を<em>public</em>にしておかないと、URLが発行されません。</p>
+<p>デフォルトのアップロード設定を<em>public</em>にしておくと良いかもです。<em>もしプライベートな写真もアップするようでしたらご注意下さい。</em></p>
+<h3>サイトごとにアルバムを分けてやるのがいいかも</h3>
+<p>サイトを複数運用するとかとなるとアルバムわけしておかないとファイルの整理ができなくなるので事前にわけておくのがいいかもしれないです。</p>
+<p>あとはアルバムをディレクトリ代わりにしちゃうのもいいかもしれないですね。</p>
+<h3>ちょこっと便利</h3>
+<p>便利なのは、<strong>アルバムのディスクリプションにURLを貼れる</strong>ってとこです。</p>
+<pre><code>cdn for &lt;a href="https://www.start30blog.com" rel="nofollow"&gt;Start30 Blog&lt;/a&gt;
+</code></pre>
+<p>こんな感じで書いといてあげると、</p>
+<p><img src="https://c1.staticflickr.com/9/8716/28056766060_707eda559c_o.png" alt="001" /></p>
+<p><strong>CDN</strong>として運用してサイトにリンクできます。</p>
+<p>まぁいらんっちゃいらんのですけどね。 ではでは、次は実際に画像をページに表示する作業です。</p>
+<div class="m-ads_w300">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- スマホ用（ロングとの入れ替え用）2 -->
+        <ins class="adsbygoogle"
+                style="display:inline-block;width:300px;height:250px"
+                data-ad-client="ca-pub-7815961604338808"
+                data-ad-slot="7582629372"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    
+<h2>画像のURLをコピーしてページに挿入する</h2>
+<p>一通りアップロードが終わりましたら、ここからはページへの差し込み作業。 対象の画像のURLを取得して表示したいページにコードを書いていきます。</p>
+<h3>共有からURL取得</h3>
+<p>ではページに差し込みたい画像Flickr上で開きまして、<strong>共有ボタン</strong>をクリック。</p>
+<p><img src="https://c2.staticflickr.com/8/7748/28338658965_f4abcf2cb7_o.png" alt="002" /></p>
+<p>すると、次の<strong>モーダルウィンドウ</strong>が開くと思います。</p>
+<p><img src="https://c1.staticflickr.com/9/8785/28235106272_cbfb8fb6a4_o.png" alt="003" /></p>
+<p>｢Embed｣に会わせますと、コードが表示されていると思います。 それを自身のページ内にペーストします。 なんか headerやらfooterやらチェック項目ありますが、ここは何もチェック無しで結構です。</p>
+<p>コピーしてきたのが下記のコード</p>
+<pre><code>&lt;a data-flickr-embed="true"  href="https://www.flickr.com/photos/145037794@N02/27706258014/in/album-72157668186139453/" title="main_vis02"&gt;&lt;img src="https://c1.staticflickr.com/9/8791/27706258014_1f8b0bf8a5_o.png" width="779" height="506" alt="main_vis02" /&gt;&lt;/a&gt;&lt;script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"&gt;&lt;/script&gt;
+</code></pre>
+<p>この状態はあくまで埋め込み用のコードです。 このまま貼り付けてもいいのですが、Flickrへのリンクもいらないので、<code>img</code>タグ部分だけ抜き取ってやります。</p>
+<pre><code>&lt;img src="https://c1.staticflickr.com/9/8791/27706258014_1f8b0bf8a5_o.png" width="779" height="506" alt="main_vis02" /&gt;
+</code></pre>
+<p><code>width</code>や<code>height</code>は環境に合わせて変更して下さい。 <strong>レスポンシブ対応</strong>の兼ね合いなどもあるかと思います。</p>
+<h2>結果、読み込み速度は改善されたのか!?</h2>
+<p style="margin-bottom:90px;">
+  …。
+</p>
+<p style="margin-bottom:90px;">
+  ……。
+</p>
+<p style="margin-bottom:60px;">
+  ………。
+</p>
+<p>遅い！！！ chromeのデベロッパーツールで、レギュラー3G で検証。</p>
+<p><img src="https://c2.staticflickr.com/8/7575/28260274541_597b972586_o.png" width="545" height="23" alt="004" /></p>
+<p>これはひどい。 いったい誰がこんな重いページの読み込みをのんびり待ってくれるだろうか。 改善策は何か無いでしょうか。</p>
+<h2>参考サイト</h2>
+<ul>
+<li><a href="https://www.flickr.com/">Welcome to Flickr &#8211; Photo Sharing</a> </li>
+<li><a href="http://viral-community.com/blog/cdn-5615/">CDN：コンテンツデリバリーネットワークの仕組みとは？主要サービスの比較や無料CDN「cloud flare」の設定手順</a> </li>
+<li><a href="https://thecookingdish.com/0110/how-to-use-flickr-as-a-cdn-in-wordpress/">How to Use flickr as a CDN in WordPress • The Cooking Dish</a></li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">33</post-id>	</item>
+	</channel>
+</rss>

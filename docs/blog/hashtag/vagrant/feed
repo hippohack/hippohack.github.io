@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>#Vagrant &#8211; HippoBlog</title>
+	<atom:link href="https://blog.hippohack.me/hashtag/vagrant/feed" rel="self" type="application/rss+xml" />
+	<link>https://blog.hippohack.me</link>
+	<description>Web開発に関する備忘録や日々の雑記ブログ</description>
+	<lastBuildDate>Sun, 30 Jun 2019 13:48:53 +0000</lastBuildDate>
+	<language>ja</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.7.13</generator>
+
+<image>
+	<url>https://blog.hippohack.me/_cms/wp-content/uploads/2021/03/image.jpg</url>
+	<title>#Vagrant &#8211; HippoBlog</title>
+	<link>https://blog.hippohack.me</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">190967550</site>	<item>
+		<title>MacのDBクライアント「Sequel Pro」からVagrant内のMySQLに接続する #sequalpro #mysql #vagrant</title>
+		<link>https://blog.hippohack.me/web/5</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Mon, 13 Aug 2018 09:30:31 +0000</pubDate>
+				<guid isPermaLink="false">http://blog.hippohack.test/?post_type=web&#038;p=5</guid>
+
+					<description><![CDATA[結論 &#8211; 最終的な設定内容 以下の設定で接続できた（あくまで自分の環境では）。 どうも通常のSSH接続でコケていたっぽい。設定をconfigに追加して解消した。 VagrantのSSHの設定を確認 $ vag [&#8230;]]]></description>
+										<content:encoded><![CDATA[<h2>結論 &#8211; 最終的な設定内容</h2>
+<p>以下の設定で接続できた（あくまで自分の環境では）。</p>
+<p>どうも通常のSSH接続でコケていたっぽい。設定をconfigに追加して解消した。</p>
+<p><img style="width:320px !important;" src="https://www.start30blog.com/_blog/wp-content/uploads/2018/02/20180206-273x300.png" alt="" width="273" height="300" class="aligncenter" /></p>
+<h2>VagrantのSSHの設定を確認</h2>
+<pre>
+<code>
+$ vagrant ssh-config
+Host default
+    HostName 127.0.0.1
+    User vagrant
+    Port 2222
+    UserKnownHostsFile /dev/null
+    StrictHostKeyChecking no
+    PasswordAuthentication no
+    IdentityFile /Users/Benzoh/.vagrant.d/boxes/ubuntu14.04_rails5/0/virtualbox/vagrant_private_key
+    IdentitiesOnly yes
+    LogLevel FATAL
+</code>
+</pre>
+<p>このとき、↑はあまり意味をなさなかった。</p>
+<p>あとから知ったが、参考サイトにあったようにportとuser、private keyのパスを設定さえすれば問題なかったみたい。</p>
+<h2>設定を追加・接続してみる</h2>
+<pre>
+<code>
+$ vagrant ssh-config --host 192.168.100.100 >> ~/.ssh/config
+</code>
+</pre>
+<pre>
+<code>
+$ ssh 192.168.100.100
+Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-85-generic x86_64)
+</code>
+</pre>
+<p>入った。</p>
+<p>で、最終的にSequal Proの設定を上記の画像の通り設定して無事Mysqlにアクセスできた。</p>
+<h2>参考サイト</h2>
+<ul>
+<li>
+Sequel Pro から Vagrant 内の MySQL に接続する &#8211; スカッとまろやか<br />
+<a href="http://sktmra.hatenadiary.jp/entry/20171203/1512310110" target="_blank" rel="noopener noreferrer">http://sktmra.hatenadiary.jp/entry/20171203/1512310110</a>
+</li>
+<li>
+通常SSHでVagrantにログインする方法 &#8211; プログラミングは芸術だ！<br />
+<a href="http://charlie1012.hatenablog.jp/entry/2015/08/31/180000" target="_blank" rel="noopener noreferrer">http://charlie1012.hatenablog.jp/entry/2015/08/31/180000</a>
+</li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">5</post-id>	</item>
+	</channel>
+</rss>

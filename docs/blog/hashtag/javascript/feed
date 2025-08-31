@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>#JavaScript &#8211; HippoBlog</title>
+	<atom:link href="https://blog.hippohack.me/hashtag/javascript/feed" rel="self" type="application/rss+xml" />
+	<link>https://blog.hippohack.me</link>
+	<description>Web開発に関する備忘録や日々の雑記ブログ</description>
+	<lastBuildDate>Sun, 23 Feb 2020 00:24:12 +0000</lastBuildDate>
+	<language>ja</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.7.13</generator>
+
+<image>
+	<url>https://blog.hippohack.me/_cms/wp-content/uploads/2021/03/image.jpg</url>
+	<title>#JavaScript &#8211; HippoBlog</title>
+	<link>https://blog.hippohack.me</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">190967550</site>	<item>
+		<title>[vue] Vue.jsで日付フォーマット</title>
+		<link>https://blog.hippohack.me/web/166</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Wed, 26 Feb 2020 21:19:55 +0000</pubDate>
+				<guid isPermaLink="false">https://blog.hippohack.me/?post_type=web&#038;p=166</guid>
+
+					<description><![CDATA[Vueのfiltersを使用して、momentでフォーマットする。 $ yarn add moment component.vue import moment from 'moment';export default { [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>Vueのfiltersを使用して、momentでフォーマットする。</p>
+<pre><code>$ yarn add moment
+</code></pre>
+<p><em class="file-name">component.vue</em></p>
+<pre><code>import moment from 'moment';export default {
+    ︙
+    filters: {
+        moment(date) {
+            return moment(date).format('YYYY/MM/DD');
+        },
+    }
+}
+</code></pre>
+<p><em class="file-name">template</em></p>
+<pre><code>&lt;div&gt;Created_at: {{ current_bookmark.created_at | moment }}&lt;/div&gt;
+</code></pre>
+<h2>参考サイト</h2>
+<ul>
+<li>http://vuejs.org/v2/guide/filters.html</li>
+<li><a href="https://www.webopixel.net/javascript/1227.html">Vue.jsで日付処理ライブラリMoment.jsを使う | webOpixel</a></li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">166</post-id>	</item>
+		<item>
+		<title>[js] テンプレートリテラルがIEで動作しない問題</title>
+		<link>https://blog.hippohack.me/web/121</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Fri, 12 Jul 2019 00:45:10 +0000</pubDate>
+				<guid isPermaLink="false">https://blog.hippohack.me/?post_type=web&#038;p=121</guid>
+
+					<description><![CDATA[テンプレートリテラルがIEでは動作しない問題の対応。 Babelを使ってコンパイルして解消する。 コード例 html = html + `&#60;div class="m_main-visual__thumbnail $ [&#8230;]]]></description>
+										<content:encoded><![CDATA[<ul>
+<li>テンプレートリテラルがIEでは動作しない問題の対応。</li>
+<li>Babelを使ってコンパイルして解消する。</li>
+</ul>
+<p><em class="file-name">コード例</em></p>
+<pre><code>html = html +
+`&lt;div class="m_main-visual__thumbnail ${is_current}" id="image-index-${index}" data-image-index="${index}"&gt;
+&lt;a href="javascript:void(0);"&gt;&lt;img src="${elm}" alt=""&gt;&lt;/a&gt;
+&lt;/div&gt;`;
+</code></pre>
+<h2>Webpackでの対応</h2>
+<p><em class="file-name">[package.json]</em></p>
+<pre><code>︙
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-es2015": "^6.24.1",
+︙
+</code></pre>
+<p><em class="file-name">[webpack.config.js]</em></p>
+<pre><code>︙
+  module: {
+    rules: [{
+        test: /\.js$/, // files ending with .js
+        exclude: /node_modules/, // exclude the node_modules directory
+        loader: "babel-loader" // use this (babel-core) loader
+      }
+    ],
+  }
+︙
+</code></pre>
+<p><em class="file-name">[.babelrc]</em></p>
+<pre><code>{
+    "presets": ["es2015"]
+}
+</code></pre>
+<h2>参考</h2>
+<ul>
+<li><a href="https://github.com/babel/babel/issues/7836">Need to help: Template literals, backticks on IE 11 not working · Issue #7836 · babel/babel</a></li>
+</ul>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">121</post-id>	</item>
+	</channel>
+</rss>

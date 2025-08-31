@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>#Book &#8211; HippoBlog</title>
+	<atom:link href="https://blog.hippohack.me/hashtag/book/feed" rel="self" type="application/rss+xml" />
+	<link>https://blog.hippohack.me</link>
+	<description>Web開発に関する備忘録や日々の雑記ブログ</description>
+	<lastBuildDate>Tue, 02 Jul 2019 13:14:34 +0000</lastBuildDate>
+	<language>ja</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.7.13</generator>
+
+<image>
+	<url>https://blog.hippohack.me/_cms/wp-content/uploads/2021/03/image.jpg</url>
+	<title>#Book &#8211; HippoBlog</title>
+	<link>https://blog.hippohack.me</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">190967550</site>	<item>
+		<title>わかっているようでわかっていなかったデザインの基礎を教えてくれる「レイアウト基本講座7日間」</title>
+		<link>https://blog.hippohack.me/note/46</link>
+		
+		<dc:creator><![CDATA[@hippohack]]></dc:creator>
+		<pubDate>Fri, 26 Jun 2015 14:18:12 +0000</pubDate>
+				<guid isPermaLink="false">http://blog.hippohack.test/?post_type=note&#038;p=46</guid>
+
+					<description><![CDATA[先輩の薦めで読んでみました「レイアウト基本講座7日間」視覚デザイン研究所。 知ってるつもりでやってたことが理論づけれたと言うか、なんとなーくがなんとなーくではダメなんだと言うことを教わりました。 なんとなくわかっていたつ [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p>先輩の薦めで読んでみました「レイアウト基本講座7日間」視覚デザイン研究所。</p>
+<p>知ってるつもりでやってたことが理論づけれたと言うか、なんとなーくがなんとなーくではダメなんだと言うことを教わりました。</p>
+<p>なんとなくわかっていたつもりでも、わかっていなかったことを的確に教えてくれる せっかく読んだので、まとめておこうと思います。</p>
+<p>いきなりですが、あとがきがおもしろい。</p>
+<blockquote>
+<p>｢多くのデザイナーにデザインの仕組みを尋ねてきたが、判る説明が聞けなかった｣</p>
+</blockquote>
+<p>■編集後記より</p>
+<p>うーん確かに。</p>
+<p>デザインってこうするものって定義がないもの。 だからなのか、デザインに理解の無い人にはデザインの重要さが伝わらないというか。 定義がないものだからセンスというのが出てきてしまうんですかね。</p>
+<p>センス任せになる。 反面、センスが最後には決めてになるんでしょうがね。</p>
+<p>デザインは間っていいますね。 ありましたね、反面率やら。視覚度やら。 この本では実際に世にでた広告を改定して差分を見せてくれるのですごくわかりやすい。</p>
+<p>案外自分がダメな例をやってしまいそうな感じが否めませんが。 そうならないように勉強しておく！。</p>
+<p>やっぱデザインはしっかり時間をかけるべきだと。 よし完璧って思って席離れて戻ったら、え、ここだめじゃんってことよくありますわね。</p>
+<p>長期で見たときなんかはなんじゃこのしょぼいデザインはって落ち込みますし。 デザインってむずかしい。。 はい。</p>
+<p>本当に基本的なことから教えてくれる感じです。 自分みたいな、駆け出しの方やノンデザイナーの方におすすめの本だと思います。</p>
+<p>一度読んで頭に入れておくだけでも全然制作活動に生きてくると思います。 一歩デザイナー脳に近づける一冊だと思います。</p>
+<p>久々の更新で、すっごい適当な文章になっています。申し訳ありません。 この記事はちょいちょい書き足していきたいと思います。</p>
+<p>では〜。</p>
+<p><a href="http://www.amazon.co.jp/gp/product/4881081438/ref=as_li_ss_il?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=4881081438&amp;linkCode=as2&amp;tag=benzohcom-22"><img border="0" src="http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&#038;ASIN=4881081438&#038;Format=_SL250_&#038;ID=AsinImage&#038;MarketPlace=JP&#038;ServiceVersion=20070822&#038;WS=1&#038;tag=benzohcom-22" /></a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=benzohcom-22&#038;l=as2&#038;o=9&#038;a=4881081438" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">46</post-id>	</item>
+	</channel>
+</rss>
